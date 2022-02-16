@@ -5,14 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'users',
-    loadChildren: () =>
-      import('./modules/user/user/user-routing.module').then(
-        (m) => m.UserRoutingModule
-      ),
+    loadChildren: () => import('./modules/user/user/user-routing.module').then(m => m.UserRoutingModule),
   },
   {
-    path: '',
-    component: LoginComponent,
+    path: '**',
+    redirectTo:'users'
   },
 ];
 @NgModule({
