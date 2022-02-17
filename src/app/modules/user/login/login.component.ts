@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -7,11 +8,16 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-@ViewChild('loginForm') loginForm!:NgForm;
+  @ViewChild('loginForm') loginForm!: NgForm;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
 
-  public loginUserSubmit():void{}
+  public loginUserSubmit(): void {
+    var loginData = this.loginForm.value;
+    this.userService.getLogin(loginData).subscribe({
+      next: (loginData) => console.log('loginData :>> ', loginData),
+    });
+  }
 }
