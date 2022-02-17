@@ -5,32 +5,67 @@
                 <p class="text-center p-3">SIGN UP</p>
             </div>
             <div class="card-body bg-light">
-                <form>
+                <form [formGroup]="signUpForm" (ngSubmit)="SignUpformSubmit()">
                     <div>
                         <label for="signUpName" class="h5">Name<i class="text-danger">*</i></label>
-                        <input type="text" class="form-control" id="signUpName" name="signUpName" ngModel required
-                            placeholder="Enter name">
+                        <input type="text" class="form-control" id="signUpName" name="signUpName" required
+                            placeholder="Enter name" formControlName="signUpName">
+                        <div class="text-danger"
+                            *ngIf="signUpForm.get('signUpName')?.touched && signUpForm.get('signUpName')?.invalid">
+                            <p *ngIf="signUpForm.get('signUpName')?.hasError('required')">
+                                *Name is required
+                            </p>
+                            <p *ngIf="signUpForm.get('signUpName')?.hasError('minlength')">
+                                *Name must be at least 3 characters long
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <label for="signUpEmail" class="h5">Email id<i class="text-danger">*</i></label>
-                        <input type="text" class="form-control" id="signUpEmail" name="signUpEmail" ngModel required
-                            minlength="3" placeholder="Enter email">
+                        <input type="text" class="form-control" id="signUpEmail" name="signUpEmail" required
+                            minlength="3" placeholder="Enter email" formControlName="signUpEmailId">
+                        <div class="text-danger"
+                            *ngIf="signUpForm.get('signUpEmailId')?.touched && signUpForm.get('signUpEmailId')?.invalid">
+                            <p *ngIf="signUpForm.get('signUpEmailId')?.hasError('required')">
+                                *Email id is required
+                            </p>
+                            <p *ngIf="signUpForm.get('signUpEmailId')?.hasError('pattern')">
+                                *Email id is invalid
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <label for="signUpPassword" class="h5">Password<i class="text-danger">*</i></label>
-                        <input type="password" class="form-control" name="signUpPassword" ngModel required minlength="8"
-                            placeholder="Enter password">
+                        <input type="password" class="form-control" name="signUpPassword" required minlength="8"
+                            placeholder="Enter password" formControlName="signUpPassword">
+                        <div class="text-danger"
+                            *ngIf="signUpForm.get('signUpPassword')?.touched && signUpForm.get('signUpPassword')?.invalid">
+                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('required')">
+                                *Password id is required
+                            </p>
+                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('minlength')">
+                                *Password must be at least 8 characters long
+                            </p>
+                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('maxlength')">
+                                *Password allows only 20 characters
+                            </p>
+                        </div>
                     </div>
                     <div class="mt-3">
                         <label for="selectRole" class="h5">Role<i class="text-danger">*</i></label>
-                        <select name="selectRole" class="form-select-sm m-2" formControlName="selectRole" ngModel>
+                        <select name="selectRole" class="form-select-sm m-2" formControlName="selectRole">
                             <option value="" disabled>Select role</option>
                             <option *ngFor="let item of roles" id={{item.id}}>{{item.value}}
                             </option>
                         </select>
+                        <div class="text-danger"
+                            *ngIf="signUpForm.get('selectRole')?.hasError('required') && signUpForm.get('selectRole')?.touched">
+                            *Select role.
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center mt-5 mb-2">
-                        <button class="btn btn-success w-50 " type="submit">Sign up</button>
+                        <button class="btn btn-success w-50 " type="submit" [disabled]="signUpForm.invalid">Sign
+                            up</button>
                     </div>
                 </form>
             </div>
