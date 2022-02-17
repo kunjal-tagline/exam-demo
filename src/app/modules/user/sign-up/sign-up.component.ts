@@ -31,6 +31,7 @@ export class SignUpComponent implements OnInit {
     signUpPassword: new FormControl(''),
     selectRole: new FormControl(''),
   });
+  
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {

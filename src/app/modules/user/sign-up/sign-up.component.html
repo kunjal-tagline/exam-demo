@@ -6,7 +6,10 @@
             </div>
             <div class="card-body bg-light">
                 <form [formGroup]="signUpForm" (ngSubmit)="SignUpformSubmit()">
-                    <div>
+                    <div class="text-center">
+                        <span class="text-secondary">Already have an account? </span><a routerLink="/users/login">LOG IN</a>
+                    </div>
+                    <div class="mt-3">
                         <label for="signUpName" class="h5">Name<i class="text-danger">*</i></label>
                         <input type="text" class="form-control" id="signUpName" name="signUpName" required
                             placeholder="Enter name" formControlName="signUpName">
