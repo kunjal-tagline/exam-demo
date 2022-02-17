@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { emailRegEx } from 'src/app/shared/shared';
 import {
@@ -17,31 +18,31 @@ export class SignUpComponent implements OnInit {
   public roles: Array<any> = [
     {
       id: 'Teacher',
-      value: 'Teacher',
+      value: 'teacher',
     },
     {
       id: 'Student',
-      value: 'Student',
+      value: 'student',
     },
   ];
 
   public signUpForm: FormGroup = new FormGroup({
-    signUpName: new FormControl(''),
-    signUpEmailId: new FormControl(''),
-    signUpPassword: new FormControl(''),
-    selectRole: new FormControl(''),
+    name: new FormControl(''),
+    email: new FormControl(''),
+    password: new FormControl(''),
+    role: new FormControl(''),
   });
-  
-  constructor(private fb: FormBuilder) {}
+
+  constructor(private fb: FormBuilder, private userService: UserService) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
-      signUpName: [
+      name: [
         '',
         Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
-      signUpEmailId: ['', Validators.pattern(emailRegEx)],
-      signUpPassword: [
+      email: ['', Validators.pattern(emailRegEx)],
+      password: [
         '',
         Validators.compose([
           Validators.required,
@@ -49,9 +50,15 @@ export class SignUpComponent implements OnInit {
           Validators.maxLength(20),
         ]),
       ],
-      selectRole: ['', [Validators.required]],
+      role: ['', [Validators.required]],
     });
   }
 
-  public SignUpformSubmit():void {}
+  public signUpformSubmit(): void {
+    var signUpData = this.signUpForm.value;
+
+    this.userService.getSignUp(signUpData).subscribe({
+      next: (signUpData) => console.log('signUpData :>> ', signUpData),
+    });
+  }
 }

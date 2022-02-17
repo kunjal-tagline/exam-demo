@@ -5,7 +5,7 @@
                 <p class="text-center p-3">SIGN UP</p>
             </div>
             <div class="card-body bg-light">
-                <form [formGroup]="signUpForm" (ngSubmit)="SignUpformSubmit()">
+                <form [formGroup]="signUpForm" (ngSubmit)="signUpformSubmit()">
                     <div class="text-center">
                         <span class="text-secondary">Already have an account? </span><a routerLink="/users/login">LOG
                             IN</a>
@@ -13,13 +13,13 @@
                     <div class="mt-3">
                         <label for="signUpName" class="h5">Name<i class="text-danger">*</i></label>
                         <input type="text" class="form-control" id="signUpName" name="signUpName" required
-                            placeholder="Enter name" formControlName="signUpName">
+                            placeholder="Enter name" formControlName="name">
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('signUpName')?.touched && signUpForm.get('signUpName')?.invalid">
-                            <p *ngIf="signUpForm.get('signUpName')?.hasError('required')">
+                            *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
+                            <p *ngIf="signUpForm.get('name')?.hasError('required')">
                                 Name is required
                             </p>
-                            <p *ngIf="signUpForm.get('signUpName')?.hasError('minlength')">
+                            <p *ngIf="signUpForm.get('name')?.hasError('minlength')">
                                 Name must be at least 3 characters long
                             </p>
                         </div>
@@ -27,13 +27,13 @@
                     <div class="mt-3">
                         <label for="signUpEmail" class="h5">Email id<i class="text-danger">*</i></label>
                         <input type="text" class="form-control" id="signUpEmail" name="signUpEmail" required
-                            minlength="3" placeholder="Enter email" formControlName="signUpEmailId">
+                            minlength="3" placeholder="Enter email" formControlName="email">
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('signUpEmailId')?.touched && signUpForm.get('signUpEmailId')?.invalid">
-                            <p *ngIf="signUpForm.get('signUpEmailId')?.hasError('required')">
+                            *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
+                            <p *ngIf="signUpForm.get('email')?.hasError('required')">
                                 Email id is required
                             </p>
-                            <p *ngIf="signUpForm.get('signUpEmailId')?.hasError('pattern')">
+                            <p *ngIf="signUpForm.get('email')?.hasError('pattern')">
                                 Email id is invalid
                             </p>
                         </div>
@@ -41,29 +41,29 @@
                     <div class="mt-3">
                         <label for="signUpPassword" class="h5">Password<i class="text-danger">*</i></label>
                         <input type="password" class="form-control" name="signUpPassword" required minlength="8"
-                            placeholder="Enter password" formControlName="signUpPassword">
+                            placeholder="Enter password" formControlName="password">
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('signUpPassword')?.touched && signUpForm.get('signUpPassword')?.invalid">
-                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('required')">
+                            *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
+                            <p *ngIf="signUpForm.get('password')?.hasError('required')">
                                 Password id is required
                             </p>
-                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('minlength')">
+                            <p *ngIf="signUpForm.get('password')?.hasError('minlength')">
                                 Password must be at least 8 characters long
                             </p>
-                            <p *ngIf="signUpForm.get('signUpPassword')?.hasError('maxlength')">
+                            <p *ngIf="signUpForm.get('password')?.hasError('maxlength')">
                                 Password allows only 20 characters
                             </p>
                         </div>
                     </div>
                     <div class="mt-3">
                         <label for="selectRole" class="h5">Role<i class="text-danger">*</i></label>
-                        <select name="selectRole" class="form-select-sm m-2" formControlName="selectRole">
+                        <select name="selectRole" class="form-select-sm m-2" formControlName="role">
                             <option value="" disabled>Select role</option>
                             <option *ngFor="let item of roles" id={{item.id}}>{{item.value}}
                             </option>
                         </select>
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('selectRole')?.hasError('required') && signUpForm.get('selectRole')?.touched">
+                            *ngIf="signUpForm.get('role')?.hasError('required') && signUpForm.get('role')?.touched">
                             Select role.
                         </div>
                     </div>
