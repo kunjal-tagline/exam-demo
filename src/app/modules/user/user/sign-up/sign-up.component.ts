@@ -1,4 +1,4 @@
-import { UserService } from './../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { emailRegEx } from 'src/app/shared/shared';
 import {
@@ -18,11 +18,11 @@ import { ToastrService } from 'ngx-toastr';
 export class SignUpComponent implements OnInit {
   public roles: Array<any> = [
     {
-      id: 'Teacher',
+      id: 'teacher',
       value: 'teacher',
     },
     {
-      id: 'Student',
+      id: 'student',
       value: 'student',
     },
   ];
@@ -64,9 +64,15 @@ export class SignUpComponent implements OnInit {
 
     this.userService.getSignUp(signUpData).subscribe((response: any) => {
       console.log('response :>> ', response);
-      console.log('lsignUpData :>> ', signUpData);
+      console.log('signUpData :>> ', signUpData);
       if (response.statusCode == 200) {
         this.toastrService.success(response.message, 'Success');
+        // if (response.data.role == 'student') {
+        //   localStorage.setItem('student-token', response.data.token);
+        // }
+        // if (response.data.role == 'teacher') {
+        //   localStorage.setItem('teacher-token', response.data.token);
+        // }
       }
       if (response.statusCode == 500) {
         this.toastrService.error(response.message, 'Failed');
