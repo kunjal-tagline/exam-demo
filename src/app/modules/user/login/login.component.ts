@@ -2,6 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private routes: Router
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +33,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('studentToken', response.data.token);
         }
         if (response.data.role == 'teacher') {
+          localStorage.setItem('teacherName',response.data.name);
           localStorage.setItem('teacherToken', response.data.token);
+          this.routes.navigate(['/teacher/dashboard']);
         }
       }
       if (response.statusCode == 500) {
