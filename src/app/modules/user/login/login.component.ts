@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
     private toastrService: ToastrService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    localStorage.clear();
+  }
 
   public loginUserSubmit(): void {
     var loginData = this.loginForm.value;
@@ -24,10 +26,16 @@ export class LoginComponent implements OnInit {
       console.log('response :>> ', response);
       console.log('loginData :>> ', loginData);
       if (response.statusCode == 200) {
-        this.toastrService.success(response.message,'Success');
+        this.toastrService.success(response.message, 'Success');
+        if (response.data.role == 'student') {
+          localStorage.setItem('studentToken', response.data.token);
+        }
+        if (response.data.role == 'teacher') {
+          localStorage.setItem('teacherToken', response.data.token);
+        }
       }
       if (response.statusCode == 500) {
-        this.toastrService.error(response.message,'Failed');
+        this.toastrService.error(response.message, 'Failed');
       }
     });
   }
