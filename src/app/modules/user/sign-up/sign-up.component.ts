@@ -8,6 +8,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,7 +34,11 @@ export class SignUpComponent implements OnInit {
     role: new FormControl(''),
   });
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group({
@@ -57,8 +62,15 @@ export class SignUpComponent implements OnInit {
   public signUpformSubmit(): void {
     var signUpData = this.signUpForm.value;
 
-    this.userService.getSignUp(signUpData).subscribe({
-      next: (signUpData) => console.log('signUpData :>> ', signUpData),
+    this.userService.getSignUp(signUpData).subscribe((response: any) => {
+      console.log('response :>> ', response);
+      console.log('lsignUpData :>> ', signUpData);
+      if (response.statusCode == 200) {
+        this.toastrService.success(response.message, 'Success');
+      }
+      if (response.statusCode == 500) {
+        this.toastrService.error(response.message, 'Failed');
+      }
     });
   }
 }
