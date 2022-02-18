@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../../services/user.service';
+import { UserService } from '../../../services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
