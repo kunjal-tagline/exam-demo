@@ -1,4 +1,4 @@
-import { TeacherLayoutComponent } from './teacher-layout/teacher-layout.component';
+import { ViewExamComponent } from './view-exam/view-exam.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -7,26 +7,24 @@ import { VerifyStudentComponent } from '../verify-student/verify-student.compone
 
 const routes: Routes = [
   {
-    path: '',
-    component: TeacherLayoutComponent,
-    children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-      },
-      {
-        path: 'student-list',
-        component: StudentListComponent,
-      },
-      {
-        path: 'verify-student',
-        component: VerifyStudentComponent,
-      },
-      {
-        path:'**',
-        redirectTo:'dashboard'
-      }
-    ],
+    path: 'dashboard',
+    component: DashboardComponent,
+  },
+  {
+    path: 'view-exam',
+    component: ViewExamComponent,
+  },
+  {
+    path: 'student-list',
+    component: StudentListComponent,
+  },
+  {
+    path: 'verify-student',
+    component: VerifyStudentComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
   },
 ];
 
