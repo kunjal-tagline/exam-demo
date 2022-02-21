@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { VerifyStudentComponent } from './modules/verify-student/verify-student.component';
+import { VerifyStudentComponent } from './modules/teacher/verify-student/verify-student.component';
 
 @NgModule({
   declarations: [
