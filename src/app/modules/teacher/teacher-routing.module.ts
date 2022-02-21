@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentListComponent } from './student-list/student-list.component';
-import { VerifyStudentComponent } from '../verify-student/verify-student.component';
+import { VerifyStudentComponent } from './verify-student/verify-student.component';
 
 const routes: Routes = [
   {

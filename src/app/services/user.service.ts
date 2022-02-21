@@ -1,4 +1,4 @@
-import { Login, ShowTeacher } from './../interfaces/login.interface';
+import { Login} from './../interfaces/login.interface';
 import { Signup } from './../interfaces/signup.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -22,10 +22,10 @@ export class UserService {
     return this.httpClient.post<Login>(this.url + 'users/Login', loginData);
   }
 
-  public getTeacherData(): Observable<ShowTeacher> {
-    console.log('this.token :>> ', this.token);
+  public getStudentsData(): Observable<any> {
+   //console.log('this.token :>> ', this.token);
     const headers = new HttpHeaders().set('access-token', this.token);
-    return this.httpClient.get<ShowTeacher>(this.url + 'dashboard/Teachers', {
+    return this.httpClient.get<any>(this.url + 'dashboard/Teachers', {
       headers: headers,
     });
   }

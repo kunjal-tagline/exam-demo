@@ -3,7 +3,9 @@ export interface Login {
   password: string;
 }
 
-export interface ShowTeacher{
+export interface studentList{
+  status:string;
+  _id:number;
   name:string;
-  token:string;
+  email:string;
 }
