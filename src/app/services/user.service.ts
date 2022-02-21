@@ -11,7 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
   private url = environment.URL;
-  public token: any = localStorage.getItem('teacherToken');
+  public teacherToken: any = localStorage.getItem('teacherToken');
   constructor(private httpClient: HttpClient) {}
 
   public getSignUp(signUpData: Signup): Observable<Signup> {
@@ -23,17 +23,24 @@ export class UserService {
   }
 
   public getStudentsData(): Observable<any> {
-    const headers = new HttpHeaders().set('access-token', this.token);
+    const headers = new HttpHeaders().set('access-token', this.teacherToken);
     return this.httpClient.get<any>(this.url + 'dashboard/Teachers', {
       headers: headers,
     });
   }
 
   public studentProfileById(id: String): Observable<any> {
-    const headers = new HttpHeaders().set('access-token', this.token);
+    const headers = new HttpHeaders().set('access-token', this.teacherToken);
     return this.httpClient.get(
       this.url + 'dashboard/Teachers/viewStudentDetail?' + 'id=' + id,
       { headers: headers }
     );
+  }
+
+  public viewExam(): Observable<any> {
+    const headers = new HttpHeaders().set('access-token', this.teacherToken);
+    return this.httpClient.get<any>(this.url + 'dashboard/Teachers/viewExam', {
+      headers: headers,
+    });
   }
 }
