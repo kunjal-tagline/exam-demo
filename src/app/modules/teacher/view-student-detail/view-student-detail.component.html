@@ -1,1 +1,17 @@
-<p>view-student-detail works!</p>
+<div class="d-flex justify-content-end">
+    <button class="btn-close" (click)="closeButton()"></button>
+</div>
+<div *ngFor="let data of studentData">
+    <h3 class="text-warning text-center mt-2">{{data.name}}'s profile</h3>
+    <p><span class="h5 ms-3">Id: </span>{{data._id}}</p>
+    <p><span class="h5 ms-3">Email: </span>{{data.email}}</p>
+</div>
+<h4 class="text-center" *ngIf="studentResultData.length>0">Result</h4>
+<div *ngFor="let data of studentResultData">
+    <div class="table ms-4">
+        <tr>subjectname:{{data.subjectName}}</tr>
+        <tr>Rank: {{data.rank}}</tr>
+        <tr>Resultstatus: {{data.resultStatus}}</tr>
+        <tr>Score: {{data.score}}</tr>
+    </div>
+</div>
