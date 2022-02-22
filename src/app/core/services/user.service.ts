@@ -1,5 +1,5 @@
-import { Login, studentList } from './../interfaces/login.interface';
-import { Signup } from './../interfaces/signup.interface';
+import { Login, studentList } from '../interfaces/login.interface';
+import { Signup } from '../interfaces/signup.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';

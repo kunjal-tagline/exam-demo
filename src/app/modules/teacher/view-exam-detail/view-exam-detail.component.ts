@@ -1,5 +1,4 @@
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { UserService } from './../../../services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
