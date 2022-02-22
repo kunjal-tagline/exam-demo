@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { VerifyStudentComponent } from './verify-student/verify-student.component';
+import { CreateExamComponent } from './create-exam/create-exam.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'verify-student',
     component: VerifyStudentComponent,
+  },
+  {
+    path: 'create-exam',
+    component: CreateExamComponent,
   },
   {
     path: '**',
