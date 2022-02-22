@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-exam.component.scss'],
 })
 export class ViewExamComponent implements OnInit {
+  public examsList: any = [];
+  public examsNotes: any = [];
   constructor(
     private userService: UserService,
     public toastrService: ToastrService
@@ -17,13 +19,13 @@ export class ViewExamComponent implements OnInit {
     this.userService.viewExam().subscribe((response: any) => {
       console.log('response :>> ', response);
       if (response.statusCode == 200) {
+        this.examsList = response.data;
+        this.examsNotes = response.data[0].notes;
+        console.log('this.examsList :>> ', this.examsList);
         this.toastrService.success(response.message, 'Success');
       } else {
         this.toastrService.error(response.message, 'Failed');
       }
-    });
-    this.userService.CreateExam().subscribe((response: any) => {
-      console.log('response :>> ', response);
     });
   }
 }

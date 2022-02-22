@@ -1,1 +1,29 @@
-<p>view-exam works!</p>
+<div class="d-flex justify-content-center h2 text-success p-4 ">
+    TOTAL EXAMS
+</div>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary h4 text-center">
+                <th>Exam id</th>
+                <th>subject name</th>
+                <th>Eamil</th>
+                <th>Notes</th>
+                <th>edit exam</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let data of examsList">
+                <td>{{data._id}}</td>
+                <td>{{data.subjectName}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.notes}}</td>
+                <td class="d-flex justify-content-center"><button class="btn-primary w-50">Edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <button class="btn btn-dark" routerLink="/teacher/create-exam">Create exam</button>
+</div>
