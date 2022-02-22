@@ -1,18 +1,21 @@
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { GoBackComponent } from './go-back/go-back.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    GoBackComponent
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    GoBackComponent
   ]
 })
 export class CoreModule { }
