@@ -1,5 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
        {
         this.toastrService.success(response.message, 'Success');
         if (response.data.role == 'student') {
+          localStorage.setItem('studentName',response.data.name);
           localStorage.setItem('studentToken', response.data.token);
+          this.routes.navigate(['/student/dashboard']);
         }
         if (response.data.role == 'teacher') {
           localStorage.setItem('teacherName',response.data.name);

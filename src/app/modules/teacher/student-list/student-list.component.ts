@@ -1,8 +1,8 @@
 import { ViewStudentDetailComponent } from './../view-student-detail/view-student-detail.component';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { studentList } from 'src/app/core/interfaces/login.interface';
+import { studentList } from 'src/app/shared/interfaces/login.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-student-list',

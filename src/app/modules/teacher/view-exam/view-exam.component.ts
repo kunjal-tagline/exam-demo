@@ -1,6 +1,6 @@
 import { ViewExamDetailComponent } from './../view-exam-detail/view-exam-detail.component';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
