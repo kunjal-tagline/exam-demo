@@ -1,1 +1,9 @@
-<p>view-exam-detail works!</p>
+<div class="d-flex justify-content-end">
+    <button class="btn-close" (click)="closeButton()"></button>
+</div>
+<div *ngFor="let data of examData" class="m-2">
+    <h3 class="text-primary">Question: {{data.question}}</h3>
+    <p>Options: {{data.options}}</p>
+    Answer: {{data.answer}}
+    <hr>
+</div>

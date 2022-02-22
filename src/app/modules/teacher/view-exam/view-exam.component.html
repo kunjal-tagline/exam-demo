@@ -9,6 +9,7 @@
                 <th>subject name</th>
                 <th>Eamil</th>
                 <th>Notes</th>
+                <th>View</th>
                 <th>edit exam</th>
             </tr>
         </thead>
@@ -19,11 +20,10 @@
                 <td>{{data.subjectName}}</td>
                 <td>{{data.email}}</td>
                 <td>{{data.notes}}</td>
-                <td class="d-flex justify-content-center"><button class="btn-primary w-50">Edit</button></td>
+                <td class="text-center"><button class="btn-primary w-50" (click)="viewExamDetails(data._id)">view</button></td>
+                <td class="text-center"><button class="btn-warning w-50" (click)="editExam(data._id)">Edit</button></td>
             </tr>
         </tbody>
     </table>
 </div>
-<div>
-    <button class="btn btn-dark" routerLink="/teacher/create-exam">Create exam</button>
-</div>
+
