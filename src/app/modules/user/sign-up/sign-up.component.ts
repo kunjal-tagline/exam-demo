@@ -1,6 +1,5 @@
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { emailRegEx } from 'src/app/shared/shared';
 import {
   Form,
   FormBuilder,
@@ -16,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+  
   public roles: Array<any> = [
     {
       id: 'teacher',
@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const emailRegEx: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'; 
     this.signUpForm = this.fb.group({
       name: [
         '',
