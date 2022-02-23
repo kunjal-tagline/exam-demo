@@ -1,9 +1,10 @@
 import {
   StudentExamListResponse,
   StudentExamPaperResponse,
-} from './../interfaces/response.interface';
-import { Signup } from './../interfaces/signup.interface';
-import { Login, studentList } from '../interfaces/login.interface';
+  StudentProfileResponse,
+} from '../interfaces/student.interface';
+import { Signup, SignUpResponse } from './../interfaces/signup.interface';
+import { Login, LoginResponse } from '../interfaces/login.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -25,12 +26,18 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getSignUp(signUpData: Signup): Observable<Signup> {
-    return this.httpClient.post<Signup>(this.url + 'users/signUp', signUpData);
+  public getSignUp(signUpData: Signup): Observable<SignUpResponse> {
+    return this.httpClient.post<SignUpResponse>(
+      this.url + 'users/signUp',
+      signUpData
+    );
   }
 
-  public getLogin(loginData: Login): Observable<Login> {
-    return this.httpClient.post<Login>(this.url + 'users/Login', loginData);
+  public getLogin(loginData: Login): Observable<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(
+      this.url + 'users/Login',
+      loginData
+    );
   }
 
   public getStudentsData(): Observable<any> {
@@ -66,8 +73,8 @@ export class UserService {
   //   return this.httpClient.put<any>(editExamUrl, { headers: this.headers });
   // }
 
-  public viewStudentProfile(): Observable<any> {
-    return this.httpClient.get<any>(this.url + 'student/getStudentDetail', {
+  public viewStudentProfile(): Observable<StudentProfileResponse> {
+    return this.httpClient.get<StudentProfileResponse>(this.url + 'student/getStudentDetail', {
       headers: this.headerStudent,
     });
   }

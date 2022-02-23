@@ -1,3 +1,4 @@
+import { Role, SignUpResponse } from './../../../shared/interfaces/signup.interface';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public roles: Array<any> = [
+  public roles: Array<Role> = [
     {
       id: 'teacher',
       value: 'teacher',
@@ -62,18 +63,14 @@ export class SignUpComponent implements OnInit {
   public signUpformSubmit(): void {
     var signUpData = this.signUpForm.value;
 
-    this.userService.getSignUp(signUpData).subscribe((response: any) => {
-      if (response.statusCode == 200) {
-        this.toastrService.success(response.message, 'Success');
-        // if (response.data.role == 'student') {
-        //   localStorage.setItem('student-token', response.data.token);
-        // }
-        // if (response.data.role == 'teacher') {
-        //   localStorage.setItem('teacher-token', response.data.token);
-        // }
-      } else {
-        this.toastrService.error(response.message, 'Failed');
-      }
-    });
+    this.userService
+      .getSignUp(signUpData)
+      .subscribe((response: SignUpResponse) => {
+        if (response.statusCode == 200) {
+          this.toastrService.success(response.message, 'Success');
+        } else {
+          this.toastrService.error(response.message, 'Failed');
+        }
+      });
   }
 }

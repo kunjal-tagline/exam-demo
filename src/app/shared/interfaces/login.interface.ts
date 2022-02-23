@@ -1,11 +1,13 @@
 export interface Login {
     email: string;
-    password: string;
+    name: string;
+    role:string;
+    token:string;
   }
   
-  export interface studentList{
-    status:string;
-    _id:number;
-    name:string;
-    email:string;
-  }
+  export interface LoginResponse {
+    statusCode: number;
+    message: string;
+    data: Login;
+  }  
+  
