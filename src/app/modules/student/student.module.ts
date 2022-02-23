@@ -6,13 +6,15 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { StudentExamListComponent } from './student-exam-list/student-exam-list.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { ViewExamPaperComponent } from './view-exam-paper/view-exam-paper.component';
 
 
 @NgModule({
   declarations: [
     StudentDashboardComponent,
     StudentProfileComponent,
-    StudentExamListComponent
+    StudentExamListComponent,
+    ViewExamPaperComponent
   ],
   imports: [
     CommonModule,

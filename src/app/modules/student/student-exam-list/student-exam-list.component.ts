@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StudentExamListResponse } from './../../../shared/interfaces/response.interface';
 import { UserService } from './../../../shared/services/user.service';
@@ -14,7 +15,8 @@ export class StudentExamListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,5 +34,7 @@ export class StudentExamListComponent implements OnInit {
       });
   }
 
-  
+  public viewExamPaperDetail(Id: string) {
+    this.route.navigate(['/student/view-exam-paper', Id]);
+  }
 }

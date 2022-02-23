@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { StudentExamListComponent } from './student-exam-list/student-exam-list.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
+import { ViewExamPaperComponent } from './view-exam-paper/view-exam-paper.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'student-exam-list',
     component: StudentExamListComponent,
+  },
+  {
+    path:'view-exam-paper/:id',
+    component:ViewExamPaperComponent,
   },
   {
     path: '**',

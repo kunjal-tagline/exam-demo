@@ -14,6 +14,7 @@
                 <th>Email Id</th>
                 <th>Subject name</th>
                 <th>Notes</th>
+                <th>Click here</th>
             </tr>
         </thead>
 
@@ -24,7 +25,8 @@
                 <td>{{data.email}}</td>
                 <td>{{data.subjectName}}</td>
                 <td>{{data.notes}}</td>
-                <!-- <td class="text-center"><button class="btn-primary w-50" (click)="viewExamDetails(data._id)" [routerLink]="['/teacher/']">view</button></td> -->
+                <td class="text-center"><button class="btn-primary w-50" (click)="viewExamPaperDetail(data._id)">view</button>
+                </td>
             </tr>
         </tbody>
     </table>
