@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-student-dashboard',
   templateUrl: './student-dashboard.component.html',
-  styleUrls: ['./student-dashboard.component.scss']
+  styleUrls: ['./student-dashboard.component.scss'],
 })
 export class StudentDashboardComponent implements OnInit {
-public studentName:any= localStorage.getItem('studentName');
-  constructor() { }
+  public studentName: string | null = localStorage.getItem('studentName');
 
-  ngOnInit(): void {
-  }
+  constructor() {}
 
+  ngOnInit(): void {}
 }
