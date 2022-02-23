@@ -1,0 +1,18 @@
+<div class="container justify-content-center pt-3">
+    <app-go-back></app-go-back>
+    <div class="card">
+        <div class="card-title text-center mt-4 h2 text-primary">
+            Exam Paper
+        </div>
+        <div class="card-body">
+            <div class="row d-flex justify-content-center">
+                <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
+            </div>
+            <div *ngFor="let data of examPaperData">
+                <p><span class="h5">Question id: </span>{{data._id}}</p>
+                <p>{{data.question}}</p>
+                <p>{{data.options}}</p>
+            </div>
+        </div>
+    </div>
+</div>
