@@ -1,3 +1,4 @@
+import { StudentExamListResponse } from './../interfaces/response.interface';
 import { Signup } from './../interfaces/signup.interface';
 import { Login, studentList } from '../interfaces/login.interface';
 import { HttpClient } from '@angular/common/http';
@@ -66,5 +67,9 @@ export class UserService {
     return this.httpClient.get<any>(this.url + 'student/getStudentDetail', {
       headers: this.headerStudent,
     });
+  }
+
+  public studentExamList():Observable<StudentExamListResponse>{
+    return this.httpClient.get<StudentExamListResponse>(this.url+ 'student/studentExam',{headers: this.headerStudent});
   }
 }

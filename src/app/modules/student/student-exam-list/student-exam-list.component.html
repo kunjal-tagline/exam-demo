@@ -1,1 +1,31 @@
-<p>student-exam-list works!</p>
+<div class="d-flex justify-content-center h2 text-success p-4 ">
+    ALL STUDENTS LIST
+</div>
+<app-go-back></app-go-back>
+<div class="row d-flex justify-content-center">
+    <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
+</div>
+<div>
+    <table class="table table-bordered table-striped" *ngIf="!spinner">
+        <thead>
+            <tr class="bg-secondary h4 text-center">
+                <th>No.</th>
+                <th>Exam Id</th>
+                <th>Email Id</th>
+                <th>Subject name</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let data of studentExamListData; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{data._id}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.subjectName}}</td>
+                <td>{{data.notes}}</td>
+                <!-- <td class="text-center"><button class="btn-primary w-50" (click)="viewExamDetails(data._id)" [routerLink]="['/teacher/']">view</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>
