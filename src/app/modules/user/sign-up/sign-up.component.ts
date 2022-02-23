@@ -15,7 +15,6 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  
   public roles: Array<any> = [
     {
       id: 'teacher',
@@ -41,7 +40,7 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const emailRegEx: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'; 
+    const emailRegEx: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
     this.signUpForm = this.fb.group({
       name: [
         '',
@@ -64,8 +63,6 @@ export class SignUpComponent implements OnInit {
     var signUpData = this.signUpForm.value;
 
     this.userService.getSignUp(signUpData).subscribe((response: any) => {
-      console.log('response :>> ', response);
-      console.log('signUpData :>> ', signUpData);
       if (response.statusCode == 200) {
         this.toastrService.success(response.message, 'Success');
         // if (response.data.role == 'student') {
@@ -74,8 +71,7 @@ export class SignUpComponent implements OnInit {
         // if (response.data.role == 'teacher') {
         //   localStorage.setItem('teacher-token', response.data.token);
         // }
-      }
-      if (response.statusCode == 500) {
+      } else {
         this.toastrService.error(response.message, 'Failed');
       }
     });

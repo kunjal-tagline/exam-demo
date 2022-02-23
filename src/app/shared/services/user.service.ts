@@ -1,5 +1,5 @@
+import { Signup } from './../interfaces/signup.interface';
 import { Login, studentList } from '../interfaces/login.interface';
-import { Signup } from '../interfaces/signup.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,6 +13,11 @@ export class UserService {
   private url = environment.URL;
   public teacherToken: any = localStorage.getItem('teacherToken');
   public headers = new HttpHeaders().set('access-token', this.teacherToken);
+  public studentToken: any = localStorage.getItem('studentToken');
+  public headerStudent = new HttpHeaders().set(
+    'access-token',
+    this.studentToken
+  );
 
   constructor(private httpClient: HttpClient) {}
 
@@ -46,7 +51,7 @@ export class UserService {
   // public CreateExam(): Observable<any> {
   //   return this.httpClient.post<any>(this.url + 'dashboard/Teachers/Exam');
   // }
-  public viewExamsDetails(id:string): Observable<any> {
+  public viewExamsDetails(id: string): Observable<any> {
     return this.httpClient.get(
       this.url + 'dashboard/Teachers/examDetail?' + 'id=' + id,
       { headers: this.headers }
@@ -56,4 +61,10 @@ export class UserService {
   //   let editExamUrl = this.url + 'dashboard/Teachers/editExam?' + 'id=' + id;
   //   return this.httpClient.put<any>(editExamUrl, { headers: this.headers });
   // }
+
+  public viewStudentProfile(): Observable<any> {
+    return this.httpClient.get<any>(this.url + 'student/getStudentDetail', {
+      headers: this.headerStudent,
+    });
+  }
 }

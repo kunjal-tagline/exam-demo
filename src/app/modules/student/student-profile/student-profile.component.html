@@ -1,1 +1,19 @@
-<p>student-profile works!</p>
+<div class="container p-5">
+    <app-go-back></app-go-back>
+    <div class="row p-5 justify-content-center">
+        <div class="card p-5 w-50 bg-info">
+            <div class="card-title text-center">
+                <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+                <p *ngFor="let data of studentProfileData">
+                    {{data.name}}
+                </p>
+            </div>
+            <div class="card-body bg-light">
+                <div *ngFor="let data of studentProfileData">
+                    <p><span class="h5 ms-3">Id: </span>{{data._id}}</p>
+                    <p><span class="h5 ms-3">Email: </span>{{data.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

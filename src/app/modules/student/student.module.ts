@@ -5,6 +5,7 @@ import { StudentRoutingModule } from './student-routing.module';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { StudentExamListComponent } from './student-exam-list/student-exam-list.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { StudentExamListComponent } from './student-exam-list/student-exam-list.
   ],
   imports: [
     CommonModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    CoreModule
   ]
 })
 export class StudentModule { }

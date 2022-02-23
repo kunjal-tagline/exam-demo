@@ -24,23 +24,22 @@ export class LoginComponent implements OnInit {
 
   public loginUserSubmit(): void {
     var loginData = this.loginForm.value;
-    this.userService.getLogin(loginData).subscribe((response: any) => { 
+    this.userService.getLogin(loginData).subscribe((response: any) => {
       console.log('response :>> ', response);
       console.log('loginData :>> ', loginData);
-       {
+      if (response.statusCode == 200) {
         this.toastrService.success(response.message, 'Success');
         if (response.data.role == 'student') {
-          localStorage.setItem('studentName',response.data.name);
+          localStorage.setItem('studentName', response.data.name);
           localStorage.setItem('studentToken', response.data.token);
           this.routes.navigate(['/student/dashboard']);
         }
         if (response.data.role == 'teacher') {
-          localStorage.setItem('teacherName',response.data.name);
+          localStorage.setItem('teacherName', response.data.name);
           localStorage.setItem('teacherToken', response.data.token);
           this.routes.navigate(['/teacher/dashboard']);
         }
-      }
-      if (response.statusCode == 500) {
+      } else {
         this.toastrService.error(response.message, 'Failed');
       }
     });
