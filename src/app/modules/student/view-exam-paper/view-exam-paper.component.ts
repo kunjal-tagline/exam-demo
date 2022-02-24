@@ -26,7 +26,6 @@ export class ViewExamPaperComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['id'];
     this.UserService.viewExamPaper(id).subscribe(
       (response: StudentExamPaperResponse) => {
-        console.log('response :>> ', response);
         if (response.statusCode === 200) {
           this.examPaperData = response.data;
           this.spinner = false;
