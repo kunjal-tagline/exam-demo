@@ -7,11 +7,24 @@
     <p><span class="h5 ms-3">Email: </span>{{data.email}}</p>
 </div>
 <h4 class="text-center" *ngIf="studentResultData.length>0">Result</h4>
-<div *ngFor="let data of studentResultData">
-    <div class="table ms-4">
-        <tr>Subjectname:{{data.subjectName}}</tr>
-        <tr>Rank: {{data.rank}}</tr>
-        <tr>Resultstatus: {{data.resultStatus}}</tr>
-        <tr>Score: {{data.score}}</tr>
-    </div>
+<div>
+    <table class="table table-bordered">
+        <thead class="bg-secondary">
+            <tr>
+                <th>Subject name</th>
+                <th>Rank</th>
+                <th>Status</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody class="bg-light">
+            <tr *ngFor="let data of studentResultData">
+                <td>{{data.subjectName}}</td>
+                <td>{{data.rank}}</td>
+                <td>{{data.resultStatus}}</td>
+                <td>{{data.score}}</td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>
