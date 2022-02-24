@@ -3,12 +3,12 @@
 </div>
 <app-go-back></app-go-back>
 <div class="row d-flex justify-content-center">
-    <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
+    <div class="spinner-grow text-primary" role="status" *ngIf="this.isLoading"></div>
 </div>
 <div>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="bg-secondary h4 text-center" *ngIf="!spinner">
+            <tr class="bg-secondary h4 text-center">
                 <th>Name</th>
                 <th>Email</th>
                 <th>Status</th>
@@ -16,7 +16,6 @@
                 <th>View profile</th>
             </tr>
         </thead>
-
         <tbody>
             <tr *ngFor="let studentListItem of studentList">
                 <td>{{studentListItem.name}}</td>

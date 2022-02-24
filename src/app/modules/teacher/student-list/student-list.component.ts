@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import {
   IAllStudentDataResponse,
   IStudentData,
@@ -16,21 +17,28 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class StudentListComponent implements OnInit {
   public studentList: IStudentData[] = [];
-  public spinner: boolean = true;
+  public isLoading!: boolean;
 
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,
-    private ngbModalService: NgbModal
+    private ngbModalService: NgbModal,
+    private spinnerService: SpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinnerService.getSpinnerLoadObs().subscribe(
+      (value: boolean): void => {
+        this.isLoading = value;
+      }
+    );
+
     this.userService
       .getStudentsData()
       .subscribe((response: IAllStudentDataResponse): void => {
         if (response.statusCode == 200) {
+          this.spinnerService.displaySpinner(!this.isLoading);
           this.studentList = response?.data;
-          this.spinner = false;
           this.toastrService.success(response.message, 'Success');
         } else {
           this.toastrService.error(response.message, 'Failed');
