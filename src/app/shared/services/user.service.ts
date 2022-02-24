@@ -1,5 +1,6 @@
 import {
   IAllStudentDataResponse,
+  ITeacherVerifyStudentsResponse,
   ITeacherViewExamDetails,
   ITeacherViewExamResponse,
   ITeacherViewProfileResponse,
@@ -49,9 +50,7 @@ export class UserService {
   public getStudentsData(): Observable<IAllStudentDataResponse> {
     return this.httpClient.get<IAllStudentDataResponse>(
       this.url + 'dashboard/Teachers',
-      {
-        headers: this.headers,
-      }
+      { headers: this.headers }
     );
   }
 
@@ -67,9 +66,7 @@ export class UserService {
   public viewExam(): Observable<ITeacherViewExamResponse> {
     return this.httpClient.get<ITeacherViewExamResponse>(
       this.url + 'dashboard/Teachers/viewExam',
-      {
-        headers: this.headers,
-      }
+      { headers: this.headers }
     );
   }
 
@@ -80,12 +77,17 @@ export class UserService {
     );
   }
 
+  public verifyStudents(): Observable<ITeacherVerifyStudentsResponse> {
+    return this.httpClient.get<ITeacherVerifyStudentsResponse>(
+      this.url + 'dashboard/Teachers/StudentForExam',
+      { headers: this.headers }
+    );
+  }
+
   public viewStudentProfile(): Observable<IStudentProfileResponse> {
     return this.httpClient.get<IStudentProfileResponse>(
       this.url + 'student/getStudentDetail',
-      {
-        headers: this.headerStudent,
-      }
+      { headers: this.headerStudent }
     );
   }
 

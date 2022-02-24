@@ -63,3 +63,15 @@ export interface ITeacherViewExamQuestionData {
   question: string;
   answer: string;
 }
+export interface ITeacherVerifyStudentsResponse {
+  statusCode: string;
+  message: string;
+  data: IVerifiedStudentData[];
+  count: number;
+}
+export interface IVerifiedStudentData {
+  status: string;
+  _id: string;
+  name: string;
+  email: string;
+}

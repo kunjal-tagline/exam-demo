@@ -1,1 +1,29 @@
+<div class="d-flex justify-content-center h2 text-success p-4 ">
+    VERIFIED STUDENTS LIST
+</div>
+<p class="text-primary">
+    Total: {{verifiedStudentCount}} 
+</p>
 <app-go-back></app-go-back>
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr class="bg-secondary h4 text-center">
+                <th>Status</th>
+                <th>student id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let verifiedstudents of VerifyStudentData">
+                <tr>
+                    <td>{{verifiedstudents.status}}</td>
+                    <td>{{verifiedstudents._id}}</td>
+                    <td>{{verifiedstudents.name}}</td>
+                    <td>{{verifiedstudents.email}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

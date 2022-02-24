@@ -1,4 +1,9 @@
+import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
+import {
+  ITeacherVerifyStudentsResponse,
+  IVerifiedStudentData,
+} from 'src/app/shared/interfaces/teacher.interface';
 
 @Component({
   selector: 'app-verify-student',
@@ -6,7 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./verify-student.component.scss'],
 })
 export class VerifyStudentComponent implements OnInit {
-  constructor() {}
+  public VerifyStudentData: IVerifiedStudentData[] = [];
+  public verifiedStudentCount!: number;
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService
+      .verifyStudents()
+      .subscribe((response: ITeacherVerifyStudentsResponse): void => {
+        this.verifiedStudentCount = response?.count;
+        this.VerifyStudentData = response?.data;
+      });
+  }
 }
