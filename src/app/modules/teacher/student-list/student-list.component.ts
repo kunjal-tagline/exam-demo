@@ -2,15 +2,15 @@ import { ViewStudentDetailComponent } from './../view-student-detail/view-studen
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { studentList } from 'src/app/shared/interfaces/login.interface';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { StudentList } from 'src/app/shared/interfaces/student.interface';
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html',
   styleUrls: ['./student-list.component.scss'],
 })
 export class StudentListComponent implements OnInit {
-  public studentList: studentList[] = [];
+  public studentList: StudentList[] = [];
   public spinner: boolean = true;
 
   constructor(

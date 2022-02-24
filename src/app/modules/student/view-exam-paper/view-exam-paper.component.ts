@@ -1,7 +1,10 @@
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../../shared/services/user.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { StudentExamPaperResponse } from 'src/app/shared/interfaces/response.interface';
+import {
+  StudentExamPaperResponse,
+  StudentViewExamDetails,
+} from 'src/app/shared/interfaces/student.interface';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewExamPaperComponent implements OnInit {
   public spinner: boolean = true;
-  public examPaperData: Array<any> = [];
+  public examPaperData: StudentViewExamDetails[] = [];
 
   constructor(
     private UserService: UserService,
