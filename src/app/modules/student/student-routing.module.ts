@@ -19,8 +19,8 @@ const routes: Routes = [
     component: StudentExamListComponent,
   },
   {
-    path:'view-exam-paper/:id',
-    component:ViewExamPaperComponent,
+    path: 'view-exam-paper/:id',
+    component: ViewExamPaperComponent,
   },
   {
     path: '**',

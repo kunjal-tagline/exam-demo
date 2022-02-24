@@ -42,7 +42,7 @@ export interface ITeacherViewExamResponse {
 
 export interface ITeacherViewExamData {
   email: string;
-  notes: Array<string>;
+  notes: string[];
   subjectName: string;
   __v: number;
   _id: string;
@@ -59,7 +59,7 @@ export interface ITeacherViewExamQuestions {
 }
 
 export interface ITeacherViewExamQuestionData {
-  options: Array<string>;
+  options: string[];
   question: string;
   answer: string;
 }

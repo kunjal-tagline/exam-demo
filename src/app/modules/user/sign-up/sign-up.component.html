@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row p-5 justify-content-center">
-        <div class="p-5 w-50 ">
+        <div class="p-5 w-50">
             <div class="card-title h3 bg-secondary">
                 <p class="text-center p-3">SIGN UP</p>
             </div>
             <div class="card-body bg-light">
                 <form [formGroup]="signUpForm" (ngSubmit)="signUpformSubmit()">
                     <div class="text-center">
-                        <span class="text-secondary">Already have an account? </span><a routerLink="/users/login">LOG
-                            IN</a>
+                        <span class="text-secondary">Already have an account? </span>
+                        <a routerLink="/users/login">LOGIN</a>
                     </div>
                     <div class="mt-3">
                         <label for="signUpName" class="h5">Name<i class="text-danger">*</i></label>
@@ -16,12 +16,8 @@
                             placeholder="Enter name" formControlName="name">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
-                            <p *ngIf="signUpForm.get('name')?.hasError('required')">
-                                Name is required
-                            </p>
-                            <p *ngIf="signUpForm.get('name')?.hasError('minlength')">
-                                Name must be at least 3 characters long
-                            </p>
+                            <p *ngIf="signUpForm.get('name')?.hasError('required')">Name is required</p>
+                            <p *ngIf="signUpForm.get('name')?.hasError('minlength')">Name must be at least 3 characters long</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -30,12 +26,8 @@
                             minlength="3" placeholder="Enter email" formControlName="email">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
-                            <p *ngIf="signUpForm.get('email')?.hasError('required')">
-                                Email id is required
-                            </p>
-                            <p *ngIf="signUpForm.get('email')?.hasError('pattern')">
-                                Email id is invalid
-                            </p>
+                            <p *ngIf="signUpForm.get('email')?.hasError('required')">Email id is required</p>
+                            <p *ngIf="signUpForm.get('email')?.hasError('pattern')">Email id is invalid</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -44,15 +36,9 @@
                             placeholder="Enter password" formControlName="password">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
-                            <p *ngIf="signUpForm.get('password')?.hasError('required')">
-                                Password id is required
-                            </p>
-                            <p *ngIf="signUpForm.get('password')?.hasError('minlength')">
-                                Password must be at least 8 characters long
-                            </p>
-                            <p *ngIf="signUpForm.get('password')?.hasError('maxlength')">
-                                Password allows only 20 characters
-                            </p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('required')">Password id is required</p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long</p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('maxlength')">Password allows only 20 characters</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -63,13 +49,10 @@
                             </option>
                         </select>
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('role')?.hasError('required') && signUpForm.get('role')?.touched">
-                            Select role.
-                        </div>
+                            *ngIf="signUpForm.get('role')?.hasError('required') && signUpForm.get('role')?.touched">Select role.</div>
                     </div>
                     <div class="d-flex justify-content-center mt-5 mb-2">
-                        <button class="btn btn-success w-50 " type="submit" [disabled]="signUpForm.invalid">Sign
-                            up</button>
+                        <button class="btn btn-success w-50 " type="submit" [disabled]="signUpForm.invalid">Sign up</button>
                     </div>
                 </form>
             </div>

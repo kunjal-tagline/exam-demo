@@ -22,7 +22,7 @@ export class StudentProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .viewStudentProfile()
-      .subscribe((response: IStudentProfileResponse) => {
+      .subscribe((response: IStudentProfileResponse): void => {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
           this.studentProfileData = [response?.data];

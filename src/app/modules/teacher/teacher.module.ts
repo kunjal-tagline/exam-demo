@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { TeacherRoutingModule } from './teacher-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ViewStudentDetailComponent } from './view-student-detail/view-student-detail.component';
 import { CreateExamComponent } from './create-exam/create-exam.component';
 import { ViewExamDetailComponent } from './view-exam-detail/view-exam-detail.component';
@@ -11,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewExamComponent } from './view-exam/view-exam.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { VerifyStudentComponent } from './verify-student/verify-student.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,14 @@ import { VerifyStudentComponent } from './verify-student/verify-student.componen
     ViewExamDetailComponent,
     ViewExamComponent,
     StudentListComponent,
-    VerifyStudentComponent
+    VerifyStudentComponent,
   ],
-  imports: [CommonModule, TeacherRoutingModule, CoreModule,FormsModule,ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    TeacherRoutingModule,
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class TeacherModule {}

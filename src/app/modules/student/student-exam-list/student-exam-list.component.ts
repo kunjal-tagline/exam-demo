@@ -25,7 +25,7 @@ export class StudentExamListComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .studentExamList()
-      .subscribe((response: IStudentExamListResponse) => {
+      .subscribe((response: IStudentExamListResponse): void => {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Sucess');
           this.studentExamListData = response?.data;

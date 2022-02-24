@@ -1,13 +1,13 @@
 <div class="d-flex justify-content-end">
     <button class="btn-close" (click)="closeButton()"></button>
 </div>
-<div *ngFor="let data of studentData">
-    <h3 class="text-warning text-center mt-2">{{data.name}}'s profile</h3>
-    <p><span class="h5 ms-3">Id: </span>{{data._id}}</p>
-    <p><span class="h5 ms-3">Email: </span>{{data.email}}</p>
+<div *ngFor="let studentDataItem of studentData">
+    <h3 class="text-warning text-center mt-2">{{studentDataItem.name}}'s profile</h3>
+    <p><span class="h5 ms-3">Id: </span>{{studentDataItem._id}}</p>
+    <p><span class="h5 ms-3">Email: </span>{{studentDataItem.email}}</p>
 </div>
 <h4 class="text-center" *ngIf="studentResultData.length>0">Result</h4>
-<div>
+<div *ngIf="studentResultData.length>0">
     <table class="table table-bordered">
         <thead class="bg-secondary">
             <tr>
@@ -18,13 +18,14 @@
             </tr>
         </thead>
         <tbody class="bg-light">
-            <tr *ngFor="let data of studentResultData">
-                <td>{{data.subjectName}}</td>
-                <td>{{data.rank}}</td>
-                <td>{{data.resultStatus}}</td>
-                <td>{{data.score}}</td>
+            <tr *ngFor="let studentResultDataItem of studentResultData">
+                <ng-container>
+                    <td>{{studentResultDataItem.subjectName}}</td>
+                    <td>{{studentResultDataItem.rank}}</td>
+                    <td>{{studentResultDataItem.resultStatus}}</td>
+                    <td>{{studentResultDataItem.score}}</td>
+                </ng-container>
             </tr>
         </tbody>
     </table>
-
 </div>

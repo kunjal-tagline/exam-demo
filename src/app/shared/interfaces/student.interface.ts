@@ -13,7 +13,7 @@ export interface IStudentProfileResponse {
 
 export interface IStudentExamData {
   _id: string;
-  notes: Array<string>;
+  notes: string[];
   subjectName: string;
   email: string;
   Result: [];
@@ -27,7 +27,7 @@ export interface IStudentExamListResponse {
 }
 
 export interface IStudentViewExamDetails {
-  options: Array<string>;
+  options: string[];
   _id: string;
   question: string;
 }

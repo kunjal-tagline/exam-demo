@@ -15,7 +15,7 @@ import {
 })
 export class ViewExamComponent implements OnInit {
   public examsList: ITeacherViewExamData[] = [];
-  public examsNotes: Array<String> = [];
+  public examsNotes: string[] = [];
   public spinner: boolean = true;
 
   constructor(
@@ -27,7 +27,7 @@ export class ViewExamComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .viewExam()
-      .subscribe((response: ITeacherViewExamResponse) => {
+      .subscribe((response: ITeacherViewExamResponse): void => {
         if (response.statusCode == 200) {
           this.spinner = false;
           this.examsList = response?.data;
@@ -42,7 +42,7 @@ export class ViewExamComponent implements OnInit {
   public viewExamDetails(examId: string): void {
     this.userService
       .viewExamsDetails(examId)
-      .subscribe((response: ITeacherViewExamDetails) => {
+      .subscribe((response: ITeacherViewExamDetails): void => {
         const modalRef = this.ngbModalService.open(ViewExamDetailComponent);
         modalRef.componentInstance.examData = response.data?.questions;
       });

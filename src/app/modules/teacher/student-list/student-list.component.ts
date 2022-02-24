@@ -27,7 +27,7 @@ export class StudentListComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .getStudentsData()
-      .subscribe((response: IAllStudentDataResponse) => {
+      .subscribe((response: IAllStudentDataResponse): void => {
         if (response.statusCode == 200) {
           this.studentList = response?.data;
           this.spinner = false;
@@ -41,7 +41,7 @@ export class StudentListComponent implements OnInit {
   public showsStudentProfile(_id: number): void {
     this.userService
       .studentProfileById(_id)
-      .subscribe((response: ITeacherViewProfileResponse) => {
+      .subscribe((response: ITeacherViewProfileResponse): void => {
         const modalRef = this.ngbModalService.open(ViewStudentDetailComponent);
         modalRef.componentInstance.studentData = response?.data;
         modalRef.componentInstance.studentResultData = response?.data[0].Result;

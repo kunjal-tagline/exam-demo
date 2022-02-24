@@ -1,5 +1,7 @@
 <div class="container justify-content-center pt-3">
+
     <app-go-back></app-go-back>
+
     <div class="row">
         <div class="card col-sm-12">
             <div class="card-title text-center mt-4 h2 text-primary">
@@ -9,13 +11,14 @@
                 <div class="row d-flex justify-content-center">
                     <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
                 </div>
-                <div *ngFor="let data of examPaperData">
-                    <p><span class="h5">Question id: </span>{{data._id}}</p>
-                    <p>{{data.question}}</p>
-                    <p>{{data.options}}</p>
+                <div>
+                    <ng-container *ngFor="let paperData of examPaperData">
+                        <p><span class="h5">Question id: </span>{{paperData._id}}</p>
+                        <p>{{paperData.question}}</p>
+                        <p>{{paperData.options}}</p>
+                    </ng-container>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

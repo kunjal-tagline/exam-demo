@@ -5,7 +5,6 @@ import {
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
-  Form,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -19,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public roles: Array<IRole> = [
+  public roles: IRole[] = [
     {
       id: 'teacher',
       value: 'teacher',

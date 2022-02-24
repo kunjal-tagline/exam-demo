@@ -25,7 +25,7 @@ export class ViewExamPaperComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.UserService.viewExamPaper(id).subscribe(
-      (response: IStudentExamPaperResponse) => {
+      (response: IStudentExamPaperResponse): void => {
         if (response.statusCode === 200) {
           this.examPaperData = response?.data;
           this.spinner = false;

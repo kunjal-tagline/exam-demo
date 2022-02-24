@@ -1,7 +1,7 @@
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
-import { ITeacherViewExamQuestionData, ITeacherViewExamQuestions } from 'src/app/shared/interfaces/teacher.interface';
+import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.interface';
 
 @Component({
   selector: 'app-view-exam-detail',
