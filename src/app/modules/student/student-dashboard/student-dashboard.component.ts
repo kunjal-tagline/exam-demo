@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-dashboard.component.scss'],
 })
 export class StudentDashboardComponent implements OnInit {
-  public studentName: string | null = localStorage.getItem('studentName');
+  public studentName: string = localStorage.getItem('studentName') || '';
 
   constructor() {}
 

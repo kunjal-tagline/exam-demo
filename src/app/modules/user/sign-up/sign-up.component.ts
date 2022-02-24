@@ -1,4 +1,7 @@
-import { Role, SignUpResponse } from './../../../shared/interfaces/signup.interface';
+import {
+  IRole,
+  ISignUpResponse,
+} from './../../../shared/interfaces/signup.interface';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -16,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  public roles: Array<Role> = [
+  public roles: Array<IRole> = [
     {
       id: 'teacher',
       value: 'teacher',
@@ -62,10 +65,9 @@ export class SignUpComponent implements OnInit {
 
   public signUpformSubmit(): void {
     var signUpData = this.signUpForm.value;
-
     this.userService
       .getSignUp(signUpData)
-      .subscribe((response: SignUpResponse) => {
+      .subscribe((response: ISignUpResponse) => {
         if (response.statusCode == 200) {
           this.toastrService.success(response.message, 'Success');
         } else {

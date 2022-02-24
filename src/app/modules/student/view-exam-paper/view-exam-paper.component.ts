@@ -1,9 +1,9 @@
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../../shared/services/user.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
-  StudentExamPaperResponse,
-  StudentViewExamDetails,
+  IStudentExamPaperResponse,
+  IStudentViewExamDetails,
 } from 'src/app/shared/interfaces/student.interface';
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ViewExamPaperComponent implements OnInit {
   public spinner: boolean = true;
-  public examPaperData: StudentViewExamDetails[] = [];
+  public examPaperData: IStudentViewExamDetails[] = [];
 
   constructor(
     private UserService: UserService,
@@ -25,9 +25,9 @@ export class ViewExamPaperComponent implements OnInit {
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params['id'];
     this.UserService.viewExamPaper(id).subscribe(
-      (response: StudentExamPaperResponse) => {
+      (response: IStudentExamPaperResponse) => {
         if (response.statusCode === 200) {
-          this.examPaperData = response.data;
+          this.examPaperData = response?.data;
           this.spinner = false;
           this.toastrService.success(response.message, 'Sucess');
         } else {

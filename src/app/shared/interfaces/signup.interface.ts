@@ -1,16 +1,16 @@
-export interface Signup {
+export interface ISignup {
   name: string;
   email: string;
   password: string;
   role: string;
 }
-export interface SignUpResponse {
+export interface ISignUpResponse {
   statusCode: number;
   message: string;
-  data: Signup[];
+  data: ISignup[];
 }
 
-export interface Role{
+export interface IRole{
   id:string;
   value:string;
 } 

@@ -2,10 +2,13 @@
     TOTAL EXAMS
 </div>
 <app-go-back></app-go-back>
+<div class="row d-flex justify-content-center">
+    <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
+</div>
 <div>
     <table class="table table-bordered table-striped">
         <thead>
-            <tr class="bg-secondary h4 text-center">
+            <tr class="bg-secondary h4 text-center" *ngIf="!spinner">
                 <th>Exam id</th>
                 <th>subject name</th>
                 <th>Eamil</th>
@@ -21,10 +24,10 @@
                 <td>{{data.subjectName}}</td>
                 <td>{{data.email}}</td>
                 <td>{{data.notes}}</td>
-                <td class="text-center"><button class="btn-primary w-50" (click)="viewExamDetails(data._id)">view</button></td>
-                <td class="text-center"><button class="btn-warning w-50" (click)="editExam(data._id)">Edit</button></td>
+                <td class="text-center"><button class="btn-primary w-50"
+                        (click)="viewExamDetails(data._id)">view</button></td>
+                <!-- <td class="text-center"><button class="btn-warning w-50" (click)="editExam(data._id)">Edit</button></td> -->
             </tr>
         </tbody>
     </table>
 </div>
-

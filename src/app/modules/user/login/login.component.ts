@@ -3,7 +3,7 @@ import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginResponse } from 'src/app/shared/interfaces/login.interface';
+import { ILoginResponse } from 'src/app/shared/interfaces/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     var loginData = this.loginForm.value;
     this.userService
       .getLogin(loginData)
-      .subscribe((response: LoginResponse) => {
+      .subscribe((response: ILoginResponse) => {
         if (response.statusCode == 200) {
           this.toastrService.success(response.message, 'Success');
           if (response.data.role == 'student') {

@@ -1,24 +1,17 @@
-export interface StudentList {
-  status: string;
-  _id: number;
-  name: string;
-  email: string;
-}
-
-export interface StudentProfileDataInterface {
+export interface IStudentProfileData {
   email: string;
   name: string;
   role: string;
   _id: string;
 }
 
-export interface StudentProfileResponse {
+export interface IStudentProfileResponse {
   statusCode: number;
   message: string;
-  data: StudentProfileDataInterface;
+  data: IStudentProfileData;
 }
 
-export interface StudentExamData {
+export interface IStudentExamData {
   _id: string;
   notes: Array<string>;
   subjectName: string;
@@ -26,21 +19,21 @@ export interface StudentExamData {
   Result: [];
 }
 
-export interface StudentExamListResponse {
+export interface IStudentExamListResponse {
   statusCode: number;
   message: string;
-  data: StudentExamData[];
+  data: IStudentExamData[];
   userId: string;
 }
 
-export interface StudentViewExamDetails {
+export interface IStudentViewExamDetails {
   options: Array<string>;
   _id: string;
   question: string;
 }
 
-export interface StudentExamPaperResponse {
+export interface IStudentExamPaperResponse {
   statusCode: number;
   message: string;
-  data: StudentViewExamDetails[];
+  data: IStudentViewExamDetails[];
 }

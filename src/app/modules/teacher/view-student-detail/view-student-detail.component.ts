@@ -1,3 +1,7 @@
+import {
+  ITeacherViewProfileData,
+  IStudentResult,
+} from './../../../shared/interfaces/teacher.interface';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
@@ -6,8 +10,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./view-student-detail.component.scss'],
 })
 export class ViewStudentDetailComponent implements OnInit {
-  @Input() studentData: any;
-  @Input() studentResultData: any;
+  @Input() public studentData!: ITeacherViewProfileData[];
+  @Input() public studentResultData!: IStudentResult[];
 
   constructor(private ngbActiveModal: NgbActiveModal) {}
 

@@ -1,13 +1,13 @@
-export interface Login {
+export interface ILogin {
     email: string;
     name: string;
     role:string;
     token:string;
   }
   
-  export interface LoginResponse {
+  export interface ILoginResponse {
     statusCode: number;
     message: string;
-    data: Login;
+    data: ILogin;
   }  
   

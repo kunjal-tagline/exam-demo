@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {
-  StudentExamData,
-  StudentExamListResponse,
+  IStudentExamData,
+  IStudentExamListResponse,
 } from '../../../shared/interfaces/student.interface';
 import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-exam-list.component.scss'],
 })
 export class StudentExamListComponent implements OnInit {
-  public studentExamListData: StudentExamData[] = [];
+  public studentExamListData: IStudentExamData[] = [];
   public spinner: boolean = true;
 
   constructor(
@@ -25,10 +25,10 @@ export class StudentExamListComponent implements OnInit {
   ngOnInit(): void {
     this.userService
       .studentExamList()
-      .subscribe((response: StudentExamListResponse) => {
+      .subscribe((response: IStudentExamListResponse) => {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Sucess');
-          this.studentExamListData = response.data;
+          this.studentExamListData = response?.data;
           this.spinner = false;
         } else {
           this.toastrService.error(response.message, 'Failed');
@@ -36,7 +36,7 @@ export class StudentExamListComponent implements OnInit {
       });
   }
 
-  public viewExamPaperDetail(id: string) {
+  public viewExamPaperDetail(id: string): void {
     this.route.navigate(['/student/view-exam-paper', id]);
   }
 }
