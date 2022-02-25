@@ -13,7 +13,7 @@ import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.
 })
 export class ViewExamDetailComponent implements OnInit {
   public examDetailsQuestions: ITeacherViewExamQuestionData[] = [];
-
+  public getExamId = this.activatedRoute.snapshot.params['examId'];
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -28,10 +28,8 @@ export class ViewExamDetailComponent implements OnInit {
   }
 
   public viewExamDetails() {
-    const getExamId = this.activatedRoute.snapshot.params['examId'];
-    console.log('getExamId :>> ', getExamId);
     this.userService
-      .viewExamsDetails(getExamId)
+      .viewExamsDetails(this.getExamId)
       .subscribe((response: ITeacherViewExamDetails) => {
         if (response.statusCode === 200) {
           this.examDetailsQuestions = response.data.questions;
@@ -42,4 +40,5 @@ export class ViewExamDetailComponent implements OnInit {
         }
       });
   }
+
 }

@@ -75,3 +75,9 @@ export interface IVerifiedStudentData {
   name: string;
   email: string;
 }
+
+export interface deleteExam{
+  statusCode:number;
+  message:string;
+  data:null;
+} 

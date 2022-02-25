@@ -28,6 +28,10 @@ export class ViewExamComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.viewExamList();
+  }
+
+  public viewExamList() {
     this.userService
       .viewExam()
       .subscribe((response: ITeacherViewExamResponse): void => {
@@ -42,12 +46,16 @@ export class ViewExamComponent implements OnInit {
       });
   }
 
-  // public deleteExamUsingId(id:any){
-  //   this.userService.deleteExam(id).subscribe((response:any):void=>{
-  // console.log('response.message :>> ', response.message);
-  //   });
-
-  // }
+  public deleteExamUsingId(id: string) {
+    this.userService.deleteExams(id).subscribe((response: any): void => {
+      if (response.statusCode === 200) {
+        this.toastrService.success(response.message, 'Sucess');
+      } else {
+        this.toastrService.error(response.mesage, 'Failed');
+      }
+      this.viewExamList();
+    });
+  }
 
   public viewExamDetails(examId: string): void {
     this.router.navigate(['/teacher/view-exam-detail', examId]);

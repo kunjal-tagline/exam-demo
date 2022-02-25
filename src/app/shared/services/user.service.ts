@@ -1,5 +1,6 @@
 import { IForgotPasswordResponse } from './../interfaces/login.interface';
 import {
+  deleteExam,
   IAllStudentDataResponse,
   ITeacherVerifyStudentsResponse,
   ITeacherViewExamDetails,
@@ -108,8 +109,8 @@ export class UserService {
     });
   }
 
-  public deleteExam(id: string): Observable<any> {
-    return this.httpClient.put<any>(
+  public deleteExams(id: string): Observable<deleteExam> {
+    return this.httpClient.delete<deleteExam>(
       this.url + 'dashboard/Teachers/deleteExam?id=' + id,
       { headers: this.headers }
     );
