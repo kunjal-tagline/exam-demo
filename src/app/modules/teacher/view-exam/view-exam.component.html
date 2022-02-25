@@ -18,15 +18,14 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let examListItem of examsList">
-                <td>{{examListItem._id}}</td>
-                <td>{{examListItem.subjectName}}</td>
-                <td>{{examListItem.email}}</td>
-                <td>{{examListItem.notes}}</td>
+            <tr *ngFor="let examL of examsList">
+                <td>{{examL._id}}</td>
+                <td>{{examL.subjectName}}</td>
+                <td>{{examL.email}}</td>
+                <td>{{examL.notes}}</td>
                 <td class="text-center">
-                    <button class="btn-primary w-50" (click)="viewExamDetails(examListItem._id)">view</button>
+                    <button class="btn-primary w-50" (click)="viewExamDetails(examL._id)">view</button>
                 </td>
-                <!-- <td class="text-center"><button class="btn-warning w-50" (click)="editExam(examListItem._id)">Edit</button></td> -->
             </tr>
         </tbody>
     </table>

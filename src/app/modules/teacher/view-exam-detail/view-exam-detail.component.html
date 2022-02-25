@@ -1,8 +1,5 @@
-<div class="d-flex justify-content-end">
-    <button class="btn-close" (click)="closeButton()"></button>
-</div>
 <div class="m-2">
-    <ng-container *ngFor="let examDataItem of examData">
+    <ng-container *ngFor="let examDataItem of examDetailsQuestions">
         <h3 class="text-primary">Question: {{examDataItem.question}}</h3>
         <p>Options: {{examDataItem.options}}</p>
         Answer: {{examDataItem.answer}}

@@ -1,10 +1,10 @@
+import { Router } from '@angular/router';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ITeacherViewExamDetails } from './../../../shared/interfaces/teacher.interface';
 import { ViewExamDetailComponent } from './../view-exam-detail/view-exam-detail.component';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   ITeacherViewExamData,
   ITeacherViewExamResponse,
@@ -21,8 +21,8 @@ export class ViewExamComponent implements OnInit {
   constructor(
     private userService: UserService,
     public toastrService: ToastrService,
-    private ngbModalService: NgbModal,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private router: Router
   ) {
     this.spinnerService.displaySpinner(true);
   }
@@ -42,12 +42,14 @@ export class ViewExamComponent implements OnInit {
       });
   }
 
+  // public deleteExamUsingId(id:any){
+  //   this.userService.deleteExam(id).subscribe((response:any):void=>{
+  // console.log('response.message :>> ', response.message);
+  //   });
+
+  // }
+
   public viewExamDetails(examId: string): void {
-    this.userService
-      .viewExamsDetails(examId)
-      .subscribe((response: ITeacherViewExamDetails): void => {
-        const modalRef = this.ngbModalService.open(ViewExamDetailComponent);
-        modalRef.componentInstance.examData = response.data?.questions;
-      });
+    this.router.navigate(['/teacher/view-exam-detail', examId]);
   }
 }

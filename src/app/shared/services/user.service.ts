@@ -75,7 +75,7 @@ export class UserService {
 
   public viewExamsDetails(id: string): Observable<ITeacherViewExamDetails> {
     return this.httpClient.get<ITeacherViewExamDetails>(
-      this.url + 'dashboard/Teachers/examDetail?' + 'id=' + id,
+      this.url + 'dashboard/Teachers/examDetail?id=' + id,
       { headers: this.headers }
     );
   }

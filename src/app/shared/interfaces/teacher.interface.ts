@@ -49,7 +49,7 @@ export interface ITeacherViewExamData {
 }
 
 export interface ITeacherViewExamDetails {
-  statusCode: string;
+  statusCode: number;
   message: string;
   data: ITeacherViewExamQuestions;
 }

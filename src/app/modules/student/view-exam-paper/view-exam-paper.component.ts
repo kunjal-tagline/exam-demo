@@ -31,7 +31,7 @@ export class ViewExamPaperComponent implements OnInit {
       (response: IStudentExamPaperResponse): void => {
         if (response.statusCode === 200) {
           this.spinnerService.displaySpinner(false);
-          this.toastrService.success(response.message, 'Sucess');
+          this.toastrService.success(response.message, 'Success');
           this.examPaperData = response?.data;
         } else {
           this.toastrService.error(response.message, 'Failed');

@@ -1,5 +1,9 @@
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { SpinnerService } from './../../../shared/services/spinner.service';
+import { ITeacherViewExamDetails } from './../../../shared/interfaces/teacher.interface';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from './../../../shared/services/user.service';
+import { Component, OnInit } from '@angular/core';
 import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.interface';
 
 @Component({
@@ -8,13 +12,34 @@ import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.
   styleUrls: ['./view-exam-detail.component.scss'],
 })
 export class ViewExamDetailComponent implements OnInit {
-  @Input() public examData!: ITeacherViewExamQuestionData[];
+  public examDetailsQuestions: ITeacherViewExamQuestionData[] = [];
 
-  constructor(private ngbActiveModal: NgbActiveModal) {}
+  constructor(
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
+    private spinnerService: SpinnerService,
+    private toastrService: ToastrService
+  ) {
+    this.spinnerService.displaySpinner(true);
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.viewExamDetails();
+  }
 
-  public closeButton(): void {
-    this.ngbActiveModal.close();
+  public viewExamDetails() {
+    const getExamId = this.activatedRoute.snapshot.params['examId'];
+    console.log('getExamId :>> ', getExamId);
+    this.userService
+      .viewExamsDetails(getExamId)
+      .subscribe((response: ITeacherViewExamDetails) => {
+        if (response.statusCode === 200) {
+          this.examDetailsQuestions = response.data.questions;
+          this.spinnerService.displaySpinner(false);
+          this.toastrService.success(response.message, 'Success');
+        } else {
+          this.toastrService.error(response.message, 'Failed');
+        }
+      });
   }
 }
