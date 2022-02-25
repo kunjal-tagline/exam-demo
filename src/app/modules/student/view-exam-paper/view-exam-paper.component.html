@@ -8,9 +8,6 @@
                 Exam Paper
             </div>
             <div class="card-body">
-                <div class="row d-flex justify-content-center">
-                    <div class="spinner-grow text-primary" role="status" *ngIf="spinner"></div>
-                </div>
                 <div>
                     <ng-container *ngFor="let paperData of examPaperData">
                         <p><span class="h5">Question id: </span>{{paperData._id}}</p>

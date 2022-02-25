@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -14,7 +15,12 @@ export class VerifyStudentComponent implements OnInit {
   public VerifyStudentData: IVerifiedStudentData[] = [];
   public verifiedStudentCount!: number;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private spinnerService: SpinnerService
+  ) {
+    spinnerService.displaySpinner(true);
+  }
 
   ngOnInit(): void {
     this.userService
@@ -22,6 +28,7 @@ export class VerifyStudentComponent implements OnInit {
       .subscribe((response: ITeacherVerifyStudentsResponse): void => {
         this.verifiedStudentCount = response?.count;
         this.VerifyStudentData = response?.data;
+        this.spinnerService.displaySpinner(false);
       });
   }
 }

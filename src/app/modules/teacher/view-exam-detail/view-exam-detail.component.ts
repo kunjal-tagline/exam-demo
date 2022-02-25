@@ -1,4 +1,3 @@
-
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, Input, OnInit } from '@angular/core';
 import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.interface';

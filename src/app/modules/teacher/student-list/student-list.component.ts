@@ -17,29 +17,24 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class StudentListComponent implements OnInit {
   public studentList: IStudentData[] = [];
-  public isLoading!: boolean;
 
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,
     private ngbModalService: NgbModal,
     private spinnerService: SpinnerService
-  ) {}
+  ) {
+    this.spinnerService.displaySpinner(true);
+  }
 
   ngOnInit(): void {
-    this.spinnerService.getSpinnerLoadObs().subscribe(
-      (value: boolean): void => {
-        this.isLoading = value;
-      }
-    );
-
     this.userService
       .getStudentsData()
       .subscribe((response: IAllStudentDataResponse): void => {
         if (response.statusCode == 200) {
-          this.spinnerService.displaySpinner(!this.isLoading);
-          this.studentList = response?.data;
+          this.spinnerService.displaySpinner(false);
           this.toastrService.success(response.message, 'Success');
+          this.studentList = response?.data;
         } else {
           this.toastrService.error(response.message, 'Failed');
         }

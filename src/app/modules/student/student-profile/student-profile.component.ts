@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,8 +17,11 @@ export class StudentProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private spinnerService: SpinnerService
+  ) {
+    this.spinnerService.displaySpinner(true);
+  }
 
   ngOnInit(): void {
     this.userService
@@ -25,6 +29,7 @@ export class StudentProfileComponent implements OnInit {
       .subscribe((response: IStudentProfileResponse): void => {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
+          this.spinnerService.displaySpinner(false);
           this.studentProfileData = [response?.data];
         } else {
           this.toastrService.error(response.message, 'Failed');

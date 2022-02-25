@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   public teacherName: String | null = localStorage.getItem('teacherName');
 
-  constructor() {}
+  constructor(private spinnerService: SpinnerService) {
+    this.spinnerService.displaySpinner(false);
+  }
 
   ngOnInit(): void {}
 }

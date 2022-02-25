@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -16,8 +17,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,
-    private routes: Router
-  ) {}
+    private routes: Router,
+    private spinnerService: SpinnerService
+  ) {
+    this.spinnerService.displaySpinner(false);
+  }
 
   ngOnInit(): void {
     localStorage.clear();

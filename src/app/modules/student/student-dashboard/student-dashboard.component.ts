@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student-dashboard.component.scss'],
 })
 export class StudentDashboardComponent implements OnInit {
-  public studentName: string = localStorage.getItem('studentName') ||'';
+  public studentName: string = localStorage.getItem('studentName') || '';
 
-  constructor() {}
+  constructor(private spinnerService: SpinnerService) {
+    this.spinnerService.displaySpinner(false);
+  }
 
   ngOnInit(): void {}
 }

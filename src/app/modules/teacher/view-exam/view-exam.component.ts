@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ITeacherViewExamDetails } from './../../../shared/interfaces/teacher.interface';
 import { ViewExamDetailComponent } from './../view-exam-detail/view-exam-detail.component';
 import { ToastrService } from 'ngx-toastr';
@@ -16,20 +17,22 @@ import {
 export class ViewExamComponent implements OnInit {
   public examsList: ITeacherViewExamData[] = [];
   public examsNotes: string[] = [];
-  public spinner: boolean = true;
 
   constructor(
     private userService: UserService,
     public toastrService: ToastrService,
-    private ngbModalService: NgbModal
-  ) {}
+    private ngbModalService: NgbModal,
+    private spinnerService: SpinnerService
+  ) {
+    this.spinnerService.displaySpinner(true);
+  }
 
   ngOnInit(): void {
     this.userService
       .viewExam()
       .subscribe((response: ITeacherViewExamResponse): void => {
         if (response.statusCode == 200) {
-          this.spinner = false;
+          this.spinnerService.displaySpinner(false);
           this.examsList = response?.data;
           this.examsNotes = response.data[0]?.notes;
           this.toastrService.success(response.message, 'Success');

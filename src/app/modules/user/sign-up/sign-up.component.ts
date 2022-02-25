@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../shared/services/spinner.service';
 import {
   IRole,
   ISignUpResponse,
@@ -39,8 +40,11 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private spinnerService: SpinnerService
+  ) {
+    this.spinnerService.displaySpinner(false);
+  }
 
   ngOnInit(): void {
     const emailRegEx: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
