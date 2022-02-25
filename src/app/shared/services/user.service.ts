@@ -1,3 +1,4 @@
+import { IForgotPasswordResponse } from './../interfaces/login.interface';
 import {
   IAllStudentDataResponse,
   ITeacherVerifyStudentsResponse,
@@ -23,13 +24,8 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
   private url: string = environment.URL;
-  public teacherToken: string = localStorage.getItem('teacherToken') || '';
-  public headers = new HttpHeaders().set('access-token', this.teacherToken);
-  public studentToken: string = localStorage.getItem('studentToken') || '';
-  public headerStudent = new HttpHeaders().set(
-    'access-token',
-    this.studentToken
-  );
+  public token: string = localStorage.getItem('token') || '';
+  public headers = new HttpHeaders().set('access-token', this.token);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -44,6 +40,13 @@ export class UserService {
     return this.httpClient.post<ILoginResponse>(
       this.url + 'users/Login',
       loginData
+    );
+  }
+
+  public forgotPassword(email: object): Observable<IForgotPasswordResponse> {
+    return this.httpClient.post<IForgotPasswordResponse>(
+      this.url + 'users/ForgotPassword',
+      email
     );
   }
 
@@ -87,24 +90,32 @@ export class UserService {
   public viewStudentProfile(): Observable<IStudentProfileResponse> {
     return this.httpClient.get<IStudentProfileResponse>(
       this.url + 'student/getStudentDetail',
-      { headers: this.headerStudent }
+      { headers: this.headers }
     );
   }
 
   public studentExamList(): Observable<IStudentExamListResponse> {
     return this.httpClient.get<IStudentExamListResponse>(
       this.url + 'student/studentExam',
-      { headers: this.headerStudent }
+      { headers: this.headers }
     );
   }
 
   public viewExamPaper(id: string): Observable<IStudentExamPaperResponse> {
     let examPaperUrl = this.url + 'student/examPaper?' + 'id=' + id;
     return this.httpClient.get<IStudentExamPaperResponse>(examPaperUrl, {
-      headers: this.headerStudent,
+      headers: this.headers,
     });
   }
 
+  public deleteExam(id: string): Observable<any> {
+    return this.httpClient.put<any>(
+      this.url + 'dashboard/Teachers/deleteExam?id=' + id,
+      { headers: this.headers }
+    );
+  }
+
+  // this code use later
   // public CreateExam(): Observable<any> {
   //   return this.httpClient.post<any>(this.url + 'dashboard/Teachers/Exam');
   // }

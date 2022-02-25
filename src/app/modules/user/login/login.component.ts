@@ -34,14 +34,13 @@ export class LoginComponent implements OnInit {
       .subscribe((response: ILoginResponse) => {
         if (response.statusCode == 200) {
           this.toastrService.success(response.message, 'Success');
+          localStorage.setItem('token', response.data.token);
           if (response.data.role == 'student') {
             localStorage.setItem('studentName', response.data.name);
-            localStorage.setItem('studentToken', response.data.token);
             this.routes.navigate(['/student/dashboard']);
           }
           if (response.data.role == 'teacher') {
             localStorage.setItem('teacherName', response.data.name);
-            localStorage.setItem('teacherToken', response.data.token);
             this.routes.navigate(['/teacher/dashboard']);
           }
         } else {
