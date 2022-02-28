@@ -12,18 +12,19 @@
                     </div>
                     <div class="mt-3">
                         <label for="signUpName" class="h5">Name<i class="text-danger">*</i></label>
-                        <input type="text" class="form-control" id="signUpName" name="signUpName" required
+                        <input type="text" class="form-control" id="signUpName" name="signUpName"
                             placeholder="Enter name" formControlName="name">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid">
                             <p *ngIf="signUpForm.get('name')?.hasError('required')">Name is required</p>
-                            <p *ngIf="signUpForm.get('name')?.hasError('minlength')">Name must be at least 3 characters long</p>
+                            <p *ngIf="signUpForm.get('name')?.hasError('minlength')">Name must be at least 3 characters
+                                long</p>
                         </div>
                     </div>
                     <div class="mt-3">
                         <label for="signUpEmail" class="h5">Email id<i class="text-danger">*</i></label>
-                        <input type="text" class="form-control" id="signUpEmail" name="signUpEmail" required
-                            minlength="3" placeholder="Enter email" formControlName="email">
+                        <input type="text" class="form-control" id="signUpEmail" name="signUpEmail"
+                            placeholder="Enter email" formControlName="email">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid">
                             <p *ngIf="signUpForm.get('email')?.hasError('required')">Email id is required</p>
@@ -32,13 +33,15 @@
                     </div>
                     <div class="mt-3">
                         <label for="signUpPassword" class="h5">Password<i class="text-danger">*</i></label>
-                        <input type="password" class="form-control" name="signUpPassword" required minlength="8"
-                            placeholder="Enter password" formControlName="password">
+                        <input type="password" class="form-control" name="signUpPassword" placeholder="Enter password"
+                            formControlName="password">
                         <div class="text-danger"
                             *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid">
-                            <p *ngIf="signUpForm.get('password')?.hasError('required')">Password id is required</p>
-                            <p *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long</p>
-                            <p *ngIf="signUpForm.get('password')?.hasError('maxlength')">Password allows only 20 characters</p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('required')">Passwordis required</p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('minlength')">Password must be at least 8
+                                characters long</p>
+                            <p *ngIf="signUpForm.get('password')?.hasError('maxlength')">Password allows only 20
+                                characters</p>
                         </div>
                     </div>
                     <div class="mt-3">
@@ -49,10 +52,12 @@
                             </option>
                         </select>
                         <div class="text-danger"
-                            *ngIf="signUpForm.get('role')?.hasError('required') && signUpForm.get('role')?.touched">Select role.</div>
+                            *ngIf="signUpForm.get('role')?.hasError('required') && signUpForm.get('role')?.touched">
+                            Select role.</div>
                     </div>
                     <div class="d-flex justify-content-center mt-5 mb-2">
-                        <button class="btn btn-success w-50 " type="submit" [disabled]="signUpForm.invalid">Sign up</button>
+                        <button class="btn btn-success w-50 " type="submit" [disabled]="signUpForm.invalid">Sign
+                            up</button>
                     </div>
                 </form>
             </div>

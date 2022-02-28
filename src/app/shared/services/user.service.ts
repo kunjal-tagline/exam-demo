@@ -19,6 +19,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
+import { IResetPasswordResponse } from '../interfaces/reset-password.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -116,6 +117,29 @@ export class UserService {
     );
   }
 
+  public resetPassword(resetForm: any): Observable<any> {
+    return this.httpClient.post<any>(
+      this.url + 'users/ResetPassword',
+      resetForm,
+      { headers: this.headers }
+    );
+  }
+
+  public newPasswordToken(): Observable<IResetPasswordResponse> {
+    return this.httpClient.get<IResetPasswordResponse>(
+      this.url + 'users/newPassword',
+      {
+        headers: this.headers,
+      }
+    );
+  }
+
+  public newPassword(newPasswordForm: any): Observable<any> {
+    return this.httpClient.post<any>(
+      this.url + 'users/ForgotPassword/Verify',
+      newPasswordForm
+    );
+  }
   // this code use later
   // public CreateExam(): Observable<any> {
   //   return this.httpClient.post<any>(this.url + 'dashboard/Teachers/Exam');
