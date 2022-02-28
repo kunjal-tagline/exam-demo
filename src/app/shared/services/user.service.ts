@@ -30,21 +30,25 @@ export class UserService {
   public headers = new HttpHeaders().set('access-token', this.token);
 
   constructor(private httpClient: HttpClient) {}
-
+  //user sign up start
   public getSignUp(signUpData: ISignup): Observable<ISignUpResponse> {
     return this.httpClient.post<ISignUpResponse>(
       this.url + 'users/signUp',
       signUpData
     );
   }
+  //user sign up end
 
+  //user login start
   public getLogin(loginData: ILogin): Observable<ILoginResponse> {
     return this.httpClient.post<ILoginResponse>(
       this.url + 'users/Login',
       loginData
     );
   }
+  //user login end
 
+  //forgot password start
   public forgotPassword(email: object): Observable<IForgotPasswordResponse> {
     return this.httpClient.post<IForgotPasswordResponse>(
       this.url + 'users/ForgotPassword',
@@ -52,6 +56,27 @@ export class UserService {
     );
   }
 
+  public newPasswordTokenCheck(): Observable<IResetPasswordResponse> {
+    return this.httpClient.get<IResetPasswordResponse>(
+      this.url + 'users/newPassword',
+      {
+        headers: this.headers,
+      }
+    );
+  }
+
+  public newPassword(newPasswordForm: any): Observable<any> {
+    return this.httpClient.post<any>(
+      this.url + 'users/ForgotPassword/Verify',
+      newPasswordForm,
+      {
+        headers: this.headers,
+      }
+    );
+  }
+  //forgot password end
+
+  //teachers access start
   public getStudentsData(): Observable<IAllStudentDataResponse> {
     return this.httpClient.get<IAllStudentDataResponse>(
       this.url + 'dashboard/Teachers',
@@ -89,6 +114,15 @@ export class UserService {
     );
   }
 
+  public deleteExams(id: string): Observable<deleteExam> {
+    return this.httpClient.delete<deleteExam>(
+      this.url + 'dashboard/Teachers/deleteExam?id=' + id,
+      { headers: this.headers }
+    );
+  }
+  //teachers end
+
+  //student access start
   public viewStudentProfile(): Observable<IStudentProfileResponse> {
     return this.httpClient.get<IStudentProfileResponse>(
       this.url + 'student/getStudentDetail',
@@ -109,14 +143,9 @@ export class UserService {
       headers: this.headers,
     });
   }
+  //student access end
 
-  public deleteExams(id: string): Observable<deleteExam> {
-    return this.httpClient.delete<deleteExam>(
-      this.url + 'dashboard/Teachers/deleteExam?id=' + id,
-      { headers: this.headers }
-    );
-  }
-
+  //reset password start
   public resetPassword(resetForm: any): Observable<any> {
     return this.httpClient.post<any>(
       this.url + 'users/ResetPassword',
@@ -124,22 +153,8 @@ export class UserService {
       { headers: this.headers }
     );
   }
+  //reset password end
 
-  public newPasswordToken(): Observable<IResetPasswordResponse> {
-    return this.httpClient.get<IResetPasswordResponse>(
-      this.url + 'users/newPassword',
-      {
-        headers: this.headers,
-      }
-    );
-  }
-
-  public newPassword(newPasswordForm: any): Observable<any> {
-    return this.httpClient.post<any>(
-      this.url + 'users/ForgotPassword/Verify',
-      newPasswordForm
-    );
-  }
   // this code use later
   // public CreateExam(): Observable<any> {
   //   return this.httpClient.post<any>(this.url + 'dashboard/Teachers/Exam');

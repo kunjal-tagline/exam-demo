@@ -64,7 +64,7 @@ export class ResetPasswordComponent implements OnInit {
     var resetFormValue = this.resetPasswordForm.value;
     this.userService
       .resetPassword(resetFormValue)
-      .subscribe((response: IResetPasswordResponse) => {
+      .subscribe((response: IResetPasswordResponse): void => {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
         } else {
