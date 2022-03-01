@@ -26,7 +26,7 @@ export class VerifyStudentComponent implements OnInit {
     this.verifyStudentGet();
   }
 
-  public verifyStudentGet() {
+  public verifyStudentGet(): void {
     //this.spinnerService.displaySpinner(true);
     const verifyStudent: ITeacherVerifyStudentsResponse =
       this.activatedRoute.snapshot.data['verifyStudent'];

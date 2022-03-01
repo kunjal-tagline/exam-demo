@@ -22,6 +22,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   public sendMail(): void {
     var enteredEmail: object = { email: this.forgotPasswordForm.value.email };
     this.userService
@@ -30,7 +31,7 @@ export class ForgotPasswordComponent implements OnInit {
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
         } else {
-          this.toastrService.error(response.message,'Failed');
+          this.toastrService.error(response.message, 'Failed');
         }
       });
   }

@@ -60,7 +60,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  public resetSubmit() {
+  public resetSubmit(): void {
     var resetFormValue = this.resetPasswordForm.value;
     this.userService
       .resetPassword(resetFormValue)

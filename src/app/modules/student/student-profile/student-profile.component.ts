@@ -23,9 +23,9 @@ export class StudentProfileComponent implements OnInit {
     this.getstudentProfile();
   }
 
-  public getstudentProfile() {
+  public getstudentProfile(): void {
     this.spinnerService.displaySpinner(true);
-    
+
     const viewStudentProfile: IStudentProfileResponse =
       this.activatedRoute.snapshot.data['viewStudentProfile'];
 

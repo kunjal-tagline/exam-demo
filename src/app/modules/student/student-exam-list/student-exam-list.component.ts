@@ -26,10 +26,10 @@ export class StudentExamListComponent implements OnInit {
     this.getStudentExamList();
   }
 
-  public getStudentExamList() {
+  public getStudentExamList(): void {
     this.spinnerService.displaySpinner(true);
-    
-    const studentExamList: IStudentExamListResponse=
+
+    const studentExamList: IStudentExamListResponse =
       this.activatedRoute.snapshot.data['studentExamList'];
 
     if (studentExamList.statusCode === 200) {

@@ -23,7 +23,7 @@ export class ViewExamDetailComponent implements OnInit {
     this.viewExamDetails();
   }
 
-  public viewExamDetails() {
+  public viewExamDetails(): void {
     //this.spinnerService.displaySpinner(true);
     const viewExamDetail: ITeacherViewExamDetails =
       this.activatedRoute.snapshot.data['viewExamDetail'];

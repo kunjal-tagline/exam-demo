@@ -25,9 +25,9 @@ export class ViewExamPaperComponent implements OnInit {
     this.getExamPaper();
   }
 
-  public getExamPaper() {
+  public getExamPaper(): void {
     this.spinnerService.displaySpinner(true);
-    
+
     const viewExamPaper: IStudentExamPaperResponse =
       this.activatedRoute.snapshot.data['viewExamPaper'];
     if (viewExamPaper.statusCode === 200) {

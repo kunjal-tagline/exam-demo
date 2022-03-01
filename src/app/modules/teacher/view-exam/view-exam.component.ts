@@ -1,8 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { SpinnerService } from './../../../shared/services/spinner.service';
-import {
-  deleteExam,
-} from './../../../shared/interfaces/teacher.interface';
+import { deleteExam } from './../../../shared/interfaces/teacher.interface';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -31,7 +29,7 @@ export class ViewExamComponent implements OnInit {
     this.viewExamList();
   }
 
-  public viewExamList() {
+  public viewExamList(): void {
     //this.spinnerService.displaySpinner(true);
     const viewExam: ITeacherViewExamResponse =
       this.activatedRoute.snapshot.data['viewExam'];
@@ -46,7 +44,7 @@ export class ViewExamComponent implements OnInit {
     }
   }
 
-  public deleteExamUsingId(id: string) {
+  public deleteExamUsingId(id: string): void {
     this.userService.deleteExams(id).subscribe((response: deleteExam): void => {
       if (response.statusCode === 200) {
         this.toastrService.success(response.message, 'Sucess');
