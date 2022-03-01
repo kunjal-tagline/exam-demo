@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import {
   IAllStudentDataResponse,
@@ -22,23 +23,25 @@ export class StudentListComponent implements OnInit {
     private userService: UserService,
     private toastrService: ToastrService,
     private ngbModalService: NgbModal,
-    private spinnerService: SpinnerService
-  ) {
-    this.spinnerService.displaySpinner(true);
-  }
+    private spinnerService: SpinnerService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.userService
-      .getStudentsData()
-      .subscribe((response: IAllStudentDataResponse): void => {
-        if (response.statusCode == 200) {
-          this.spinnerService.displaySpinner(false);
-          this.toastrService.success(response.message, 'Success');
-          this.studentList = response?.data;
-        } else {
-          this.toastrService.error(response.message, 'Failed');
-        }
-      });
+    this.studentDataGet();
+  }
+
+  public studentDataGet(): void {
+    //this.spinnerService.displaySpinner(true);
+    const studentList:IAllStudentDataResponse = this.activatedRoute.snapshot.data['studentList'];
+
+      if (studentList.statusCode == 200) {
+        this.toastrService.success(studentList.message, 'Success');
+        this.studentList = studentList?.data;
+        //this.spinnerService.displaySpinner(false);
+      } else {
+        this.toastrService.error(studentList.message, 'Failed');
+      }
   }
 
   public showsStudentProfile(_id: number): void {

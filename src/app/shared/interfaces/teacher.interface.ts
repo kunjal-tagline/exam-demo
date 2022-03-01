@@ -64,7 +64,7 @@ export interface ITeacherViewExamQuestionData {
   answer: string;
 }
 export interface ITeacherVerifyStudentsResponse {
-  statusCode: string;
+  statusCode: number;
   message: string;
   data: IVerifiedStudentData[];
   count: number;
