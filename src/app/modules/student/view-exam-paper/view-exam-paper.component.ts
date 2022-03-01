@@ -1,6 +1,5 @@
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
   IStudentExamPaperResponse,
@@ -17,26 +16,26 @@ export class ViewExamPaperComponent implements OnInit {
   public examPaperData: IStudentViewExamDetails[] = [];
 
   constructor(
-    private UserService: UserService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private spinnerService: SpinnerService
-  ) {
-    this.spinnerService.displaySpinner(true);
-  }
+  ) {}
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.UserService.viewExamPaper(id).subscribe(
-      (response: IStudentExamPaperResponse): void => {
-        if (response.statusCode === 200) {
-          this.spinnerService.displaySpinner(false);
-          this.toastrService.success(response.message, 'Success');
-          this.examPaperData = response?.data;
-        } else {
-          this.toastrService.error(response.message, 'Failed');
-        }
-      }
-    );
+    this.getExamPaper();
+  }
+
+  public getExamPaper() {
+    this.spinnerService.displaySpinner(true);
+    
+    const viewExamPaper: IStudentExamPaperResponse =
+      this.activatedRoute.snapshot.data['viewExamPaper'];
+    if (viewExamPaper.statusCode === 200) {
+      this.spinnerService.displaySpinner(false);
+      this.toastrService.success(viewExamPaper.message, 'Success');
+      this.examPaperData = viewExamPaper?.data;
+    } else {
+      this.toastrService.error(viewExamPaper.message, 'Failed');
+    }
   }
 }

@@ -1,11 +1,9 @@
+import { IStudentProfileResponse } from './../../../shared/interfaces/student.interface';
+import { ActivatedRoute } from '@angular/router';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import {
-  IStudentProfileResponse,
-  IStudentProfileData,
-} from 'src/app/shared/interfaces/student.interface';
+import { IStudentProfileData } from 'src/app/shared/interfaces/student.interface';
 
 @Component({
   selector: 'app-student-profile',
@@ -16,24 +14,27 @@ export class StudentProfileComponent implements OnInit {
   public studentProfileData: IStudentProfileData[] = [];
 
   constructor(
-    private userService: UserService,
+    private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
     private spinnerService: SpinnerService
-  ) {
-    this.spinnerService.displaySpinner(true);
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.userService
-      .viewStudentProfile()
-      .subscribe((response: IStudentProfileResponse): void => {
-        if (response.statusCode === 200) {
-          this.toastrService.success(response.message, 'Success');
-          this.spinnerService.displaySpinner(false);
-          this.studentProfileData = [response?.data];
-        } else {
-          this.toastrService.error(response.message, 'Failed');
-        }
-      });
+    this.getstudentProfile();
+  }
+
+  public getstudentProfile() {
+    this.spinnerService.displaySpinner(true);
+    
+    const viewStudentProfile: IStudentProfileResponse =
+      this.activatedRoute.snapshot.data['viewStudentProfile'];
+
+    if (viewStudentProfile.statusCode === 200) {
+      this.toastrService.success(viewStudentProfile.message, 'Success');
+      this.spinnerService.displaySpinner(false);
+      this.studentProfileData = [viewStudentProfile?.data];
+    } else {
+      this.toastrService.error(viewStudentProfile.message, 'Failed');
+    }
   }
 }
