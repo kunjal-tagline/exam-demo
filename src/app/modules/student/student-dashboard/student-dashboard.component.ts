@@ -12,6 +12,10 @@ export class StudentDashboardComponent implements OnInit {
   constructor(private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
+    this.stopSpinner();
+  }
+
+  public stopSpinner():void{
     this.spinnerService.displaySpinner(false);
   }
 }

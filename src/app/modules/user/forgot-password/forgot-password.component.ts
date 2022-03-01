@@ -27,7 +27,6 @@ export class ForgotPasswordComponent implements OnInit {
     this.userService
       .forgotPassword(enteredEmail)
       .subscribe((response: IForgotPasswordResponse) => {
-        console.log('response :>> ', response);
         if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
         } else {
