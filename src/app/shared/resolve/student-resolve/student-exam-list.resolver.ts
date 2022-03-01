@@ -1,4 +1,4 @@
-import { UserService } from './../../services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Injectable } from '@angular/core';
 import {
   Resolve,
@@ -6,7 +6,7 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { IStudentExamListResponse } from '../../interfaces/student.interface';
+import { IStudentExamListResponse } from 'src/app/shared/interfaces/student.interface';
 
 @Injectable({
   providedIn: 'root',

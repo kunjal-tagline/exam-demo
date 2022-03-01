@@ -1,6 +1,6 @@
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../shared/services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -28,11 +28,12 @@ export class LoginComponent implements OnInit {
   }
 
   public loginUserSubmit(): void {
-    var loginData = this.loginForm.value;
+    const loginData = this.loginForm.value;
+    
     this.userService
       .getLogin(loginData)
       .subscribe((response: ILoginResponse) => {
-        if (response.statusCode == 200) {
+        if (response.statusCode === 200) {
           this.toastrService.success(response.message, 'Success');
           localStorage.setItem('token', response.data.token);
           if (response.data.role == 'student') {

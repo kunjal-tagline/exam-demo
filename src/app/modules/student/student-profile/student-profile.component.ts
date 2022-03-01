@@ -1,6 +1,6 @@
-import { IStudentProfileResponse } from './../../../shared/interfaces/student.interface';
+import { IStudentProfileResponse } from 'src/app/shared/interfaces/student.interface';
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { IStudentProfileData } from 'src/app/shared/interfaces/student.interface';

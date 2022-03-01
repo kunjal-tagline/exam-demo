@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-go-back',
   templateUrl: './go-back.component.html',

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ViewExamComponent } from './view-exam.component';
+import { ViewExamComponent } from 'src/app/modules/teacher/view-exam/view-exam.component';
 
 describe('ViewExamComponent', () => {
   let component: ViewExamComponent;
@@ -8,9 +7,8 @@ describe('ViewExamComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewExamComponent ]
-    })
-    .compileComponents();
+      declarations: [ViewExamComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

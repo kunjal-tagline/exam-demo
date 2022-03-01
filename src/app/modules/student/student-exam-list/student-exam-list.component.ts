@@ -1,10 +1,10 @@
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {
   IStudentExamData,
   IStudentExamListResponse,
-} from '../../../shared/interfaces/student.interface';
+} from 'src/app/shared/interfaces/student.interface';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -33,7 +33,7 @@ export class StudentExamListComponent implements OnInit {
       this.activatedRoute.snapshot.data['studentExamList'];
 
     if (studentExamList.statusCode === 200) {
-      this.toastrService.success(studentExamList.message, 'Sucess');
+      this.toastrService.success(studentExamList.message, 'Success');
       this.studentExamListData = studentExamList?.data;
       this.spinnerService.displaySpinner(false);
     } else {

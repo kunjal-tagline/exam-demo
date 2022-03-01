@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from './../../../shared/services/user.service';
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,

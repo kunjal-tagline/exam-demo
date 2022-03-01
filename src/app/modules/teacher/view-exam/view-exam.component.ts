@@ -1,8 +1,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { SpinnerService } from './../../../shared/services/spinner.service';
-import { deleteExam } from './../../../shared/interfaces/teacher.interface';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
+import { deleteExam } from 'src/app/shared/interfaces/teacher.interface';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../shared/services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
   ITeacherViewExamData,
@@ -30,11 +30,12 @@ export class ViewExamComponent implements OnInit {
   }
 
   public viewExamList(): void {
-    //this.spinnerService.displaySpinner(true);
+    this.spinnerService.displaySpinner(true);
+
     const viewExam: ITeacherViewExamResponse =
       this.activatedRoute.snapshot.data['viewExam'];
 
-    if (viewExam.statusCode == 200) {
+    if (viewExam.statusCode === 200) {
       this.spinnerService.displaySpinner(false);
       this.examsList = viewExam?.data;
       this.examsNotes = viewExam?.data[0]?.notes;
@@ -47,11 +48,11 @@ export class ViewExamComponent implements OnInit {
   public deleteExamUsingId(id: string): void {
     this.userService.deleteExams(id).subscribe((response: deleteExam): void => {
       if (response.statusCode === 200) {
-        this.toastrService.success(response.message, 'Sucess');
+        this.toastrService.success(response.message, 'Success');
+        this.viewExamList();
       } else {
         this.toastrService.error(response.message, 'Failed');
       }
-      this.viewExamList();
     });
   }
 

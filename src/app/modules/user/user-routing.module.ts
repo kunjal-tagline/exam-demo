@@ -1,9 +1,9 @@
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from 'src/app/modules/user/sign-up/sign-up.component';
+import { LoginComponent } from 'src/app/modules/user/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from 'src/app/modules/user/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from 'src/app/modules/user/reset-password/reset-password.component';
 
 const routes: Routes = [
   {

@@ -1,4 +1,4 @@
-import { IForgotPasswordResponse } from './../interfaces/login.interface';
+import { IForgotPasswordResponse } from 'src/app/shared/interfaces/login.interface';
 import {
   deleteExam,
   IAllStudentDataResponse,
@@ -6,20 +6,20 @@ import {
   ITeacherViewExamDetails,
   ITeacherViewExamResponse,
   ITeacherViewProfileResponse,
-} from './../interfaces/teacher.interface';
+} from 'src/app/shared/interfaces/teacher.interface';
 import {
   IStudentExamListResponse,
   IStudentExamPaperResponse,
   IStudentProfileResponse,
-} from '../interfaces/student.interface';
-import { ISignup, ISignUpResponse } from './../interfaces/signup.interface';
-import { ILogin, ILoginResponse } from '../interfaces/login.interface';
+} from 'src/app/shared/interfaces/student.interface';
+import { ISignup, ISignUpResponse } from 'src/app/shared/interfaces/signup.interface';
+import { ILogin, ILoginResponse } from 'src/app/shared/interfaces/login.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpHeaders } from '@angular/common/http';
-import { IResetPasswordResponse } from '../interfaces/reset-password.interface';
+import { IResetPasswordResponse } from 'src/app/shared/interfaces/reset-password.interface';
 
 @Injectable({
   providedIn: 'root',

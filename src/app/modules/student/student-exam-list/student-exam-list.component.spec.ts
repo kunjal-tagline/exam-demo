@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { StudentExamListComponent } from './student-exam-list.component';
+import { StudentExamListComponent } from 'src/app/modules/student/student-exam-list/student-exam-list.component';
 
 describe('StudentExamListComponent', () => {
   let component: StudentExamListComponent;
@@ -8,9 +7,8 @@ describe('StudentExamListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StudentExamListComponent ]
-    })
-    .compileComponents();
+      declarations: [StudentExamListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

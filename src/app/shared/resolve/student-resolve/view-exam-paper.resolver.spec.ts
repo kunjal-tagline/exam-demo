@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ViewExamPaperResolver } from './view-exam-paper.resolver';
+import { ViewExamPaperResolver } from 'src/app/shared/resolve/student-resolve/view-exam-paper.resolver';
 
 describe('ViewExamPaperResolver', () => {
   let resolver: ViewExamPaperResolver;

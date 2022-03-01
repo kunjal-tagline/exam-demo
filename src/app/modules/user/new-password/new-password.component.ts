@@ -40,5 +40,5 @@ export class NewPasswordComponent implements OnInit {
     });
   }
 
-  public newPasswordGenrate() {}
+  public newPasswordGenrate(): void {}
 }

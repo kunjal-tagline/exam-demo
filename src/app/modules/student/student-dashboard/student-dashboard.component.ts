@@ -1,4 +1,4 @@
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +15,7 @@ export class StudentDashboardComponent implements OnInit {
     this.stopSpinner();
   }
 
-  public stopSpinner():void{
+  public stopSpinner(): void {
     this.spinnerService.displaySpinner(false);
   }
 }

@@ -1,9 +1,9 @@
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import {
   IRole,
   ISignUpResponse,
-} from './../../../shared/interfaces/signup.interface';
-import { UserService } from '../../../shared/services/user.service';
+} from 'src/app/shared/interfaces/signup.interface';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -48,6 +48,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     const emailRegEx: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$';
+
     this.signUpForm = this.fb.group({
       name: [
         '',
@@ -68,6 +69,7 @@ export class SignUpComponent implements OnInit {
 
   public signUpformSubmit(): void {
     var signUpData = this.signUpForm.value;
+
     this.userService
       .getSignUp(signUpData)
       .subscribe((response: ISignUpResponse) => {

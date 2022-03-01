@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StudentListResolver } from './student-list.resolver';
+import { StudentListResolver } from 'src/app/shared/resolve/teacher-resolve/student-list.resolver';
 
 describe('StudentListResolver', () => {
   let resolver: StudentListResolver;

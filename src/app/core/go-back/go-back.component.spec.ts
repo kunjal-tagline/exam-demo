@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { GoBackComponent } from './go-back.component';
+import { GoBackComponent } from 'src/app/core/go-back/go-back.component';
 
 describe('GoBackComponent', () => {
   let component: GoBackComponent;
@@ -8,9 +7,8 @@ describe('GoBackComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GoBackComponent ]
-    })
-    .compileComponents();
+      declarations: [GoBackComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

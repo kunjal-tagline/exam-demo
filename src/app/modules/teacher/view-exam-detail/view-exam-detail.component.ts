@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
-import { SpinnerService } from './../../../shared/services/spinner.service';
-import { ITeacherViewExamDetails } from './../../../shared/interfaces/teacher.interface';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
+import { ITeacherViewExamDetails } from 'src/app/shared/interfaces/teacher.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ITeacherViewExamQuestionData } from 'src/app/shared/interfaces/teacher.interface';
@@ -24,7 +24,7 @@ export class ViewExamDetailComponent implements OnInit {
   }
 
   public viewExamDetails(): void {
-    //this.spinnerService.displaySpinner(true);
+    this.spinnerService.displaySpinner(true);
     const viewExamDetail: ITeacherViewExamDetails =
       this.activatedRoute.snapshot.data['viewExamDetail'];
 

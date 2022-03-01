@@ -1,7 +1,7 @@
 import {
   ITeacherViewProfileData,
   IStudentResult,
-} from './../../../shared/interfaces/teacher.interface';
+} from 'src/app/shared/interfaces/teacher.interface';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({

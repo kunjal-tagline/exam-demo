@@ -1,13 +1,13 @@
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from './../../../shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import {
   IAllStudentDataResponse,
   IStudentData,
   ITeacherViewProfileResponse,
-} from './../../../shared/interfaces/teacher.interface';
-import { ViewStudentDetailComponent } from './../view-student-detail/view-student-detail.component';
+} from 'src/app/shared/interfaces/teacher.interface';
+import { ViewStudentDetailComponent } from 'src/app/modules/teacher/view-student-detail/view-student-detail.component';
 import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../../../shared/services/user.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -33,15 +33,17 @@ export class StudentListComponent implements OnInit {
 
   public studentDataGet(): void {
     //this.spinnerService.displaySpinner(true);
-    const studentList:IAllStudentDataResponse = this.activatedRoute.snapshot.data['studentList'];
+    
+    const studentList: IAllStudentDataResponse =
+      this.activatedRoute.snapshot.data['studentList'];
 
-      if (studentList.statusCode == 200) {
-        this.toastrService.success(studentList.message, 'Success');
-        this.studentList = studentList?.data;
-        //this.spinnerService.displaySpinner(false);
-      } else {
-        this.toastrService.error(studentList.message, 'Failed');
-      }
+    if (studentList.statusCode === 200) {
+      this.toastrService.success(studentList.message, 'Success');
+      this.studentList = studentList?.data;
+      //this.spinnerService.displaySpinner(false);
+    } else {
+      this.toastrService.error(studentList.message, 'Failed');
+    }
   }
 
   public showsStudentProfile(_id: number): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpinnerService } from './shared/services/spinner.service';
+import { SpinnerService } from 'src/app/shared/services/spinner.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,10 @@ export class AppComponent implements OnInit {
   constructor(private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
+    this.spinnerActivate();
+  }
+
+  public spinnerActivate(): void {
     this.spinnerService
       .getSpinnerLoadObs()
       .subscribe((value: boolean): void => {

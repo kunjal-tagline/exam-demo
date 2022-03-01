@@ -1,5 +1,5 @@
-import { ITeacherVerifyStudentsResponse } from './../../interfaces/teacher.interface';
-import { UserService } from '../../services/user.service';
+import { ITeacherVerifyStudentsResponse } from 'src/app/shared/interfaces/teacher.interface';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Injectable } from '@angular/core';
 import {
   Resolve,
