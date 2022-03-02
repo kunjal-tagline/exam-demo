@@ -1,6 +1,5 @@
 import { IStudentProfileResponse } from 'src/app/shared/interfaces/student.interface';
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { IStudentProfileData } from 'src/app/shared/interfaces/student.interface';
@@ -15,23 +14,18 @@ export class StudentProfileComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService,
-    private spinnerService: SpinnerService
-  ) {}
+    private toastrService: ToastrService) {}
 
   ngOnInit(): void {
     this.getstudentProfile();
   }
 
   public getstudentProfile(): void {
-    this.spinnerService.displaySpinner(true);
-
     const viewStudentProfile: IStudentProfileResponse =
       this.activatedRoute.snapshot.data['viewStudentProfile'];
 
     if (viewStudentProfile.statusCode === 200) {
       this.toastrService.success(viewStudentProfile.message, 'Success');
-      this.spinnerService.displaySpinner(false);
       this.studentProfileData = [viewStudentProfile?.data];
     } else {
       this.toastrService.error(viewStudentProfile.message, 'Failed');

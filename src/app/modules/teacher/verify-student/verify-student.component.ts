@@ -1,6 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 import {
   ITeacherVerifyStudentsResponse,
@@ -17,7 +16,6 @@ export class VerifyStudentComponent implements OnInit {
   public verifiedStudentCount!: number;
 
   constructor(
-    private spinnerService: SpinnerService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService
   ) {}
@@ -27,15 +25,12 @@ export class VerifyStudentComponent implements OnInit {
   }
 
   public verifyStudentGet(): void {
-    this.spinnerService.displaySpinner(true);
-    
     const verifyStudent: ITeacherVerifyStudentsResponse =
       this.activatedRoute.snapshot.data['verifyStudent'];
 
     if (verifyStudent.statusCode === 200) {
       this.verifiedStudentCount = verifyStudent?.count;
       this.VerifyStudentData = verifyStudent?.data;
-      this.spinnerService.displaySpinner(false);
       this.toastrService.success(verifyStudent.message, 'Success');
     } else {
       this.toastrService.error(verifyStudent.message, 'Failed');

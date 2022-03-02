@@ -1,4 +1,3 @@
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -17,11 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,
-    private routes: Router,
-    private spinnerService: SpinnerService
-  ) {
-    this.spinnerService.displaySpinner(false);
-  }
+    private routes: Router
+  ) {}
 
   ngOnInit(): void {
     localStorage.clear();
@@ -29,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   public loginUserSubmit(): void {
     const loginData = this.loginForm.value;
-    
+
     this.userService
       .getLogin(loginData)
       .subscribe((response: ILoginResponse) => {

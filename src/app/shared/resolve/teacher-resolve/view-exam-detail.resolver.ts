@@ -1,10 +1,6 @@
 import { UserService } from 'src/app/shared/services/user.service';
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-} from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ITeacherViewExamDetails } from 'src/app/shared/interfaces/teacher.interface';
 
@@ -16,10 +12,7 @@ export class ViewExamDetailResolver
 {
   constructor(private userService: UserService) {}
 
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<ITeacherViewExamDetails> {
+  resolve(route: ActivatedRouteSnapshot): Observable<ITeacherViewExamDetails> {
     return this.userService.viewExamsDetails(route.params['examId']);
   }
 }

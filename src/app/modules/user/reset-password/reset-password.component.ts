@@ -1,6 +1,5 @@
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/services/user.service';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -23,13 +22,10 @@ export class ResetPasswordComponent implements OnInit {
   });
 
   constructor(
-    private spinnerService: SpinnerService,
     private fb: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService
-  ) {
-    this.spinnerService.displaySpinner(false);
-  }
+  ) {}
 
   ngOnInit(): void {
     this.resetPasswordForm = this.fb.group({
@@ -62,6 +58,7 @@ export class ResetPasswordComponent implements OnInit {
 
   public resetSubmit(): void {
     var resetFormValue = this.resetPasswordForm.value;
+
     this.userService
       .resetPassword(resetFormValue)
       .subscribe((response: IResetPasswordResponse): void => {

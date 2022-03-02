@@ -1,5 +1,4 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { deleteExam } from 'src/app/shared/interfaces/teacher.interface';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -20,7 +19,6 @@ export class ViewExamComponent implements OnInit {
   constructor(
     private userService: UserService,
     public toastrService: ToastrService,
-    private spinnerService: SpinnerService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
@@ -30,13 +28,10 @@ export class ViewExamComponent implements OnInit {
   }
 
   public viewExamList(): void {
-    this.spinnerService.displaySpinner(true);
-
     const viewExam: ITeacherViewExamResponse =
       this.activatedRoute.snapshot.data['viewExam'];
 
     if (viewExam.statusCode === 200) {
-      this.spinnerService.displaySpinner(false);
       this.examsList = viewExam?.data;
       this.examsNotes = viewExam?.data[0]?.notes;
       this.toastrService.success(viewExam.message, 'Success');

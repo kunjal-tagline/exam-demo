@@ -1,7 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/shared/services/user.service';
 import { NgForm } from '@angular/forms';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IForgotPasswordResponse } from 'src/app/shared/interfaces/login.interface';
 
@@ -14,12 +13,9 @@ export class ForgotPasswordComponent implements OnInit {
   @ViewChild('forgotPasswordForm') forgotPasswordForm!: NgForm;
 
   constructor(
-    private spinnerService: SpinnerService,
     private userService: UserService,
     private toastrService: ToastrService
-  ) {
-    this.spinnerService.displaySpinner(false);
-  }
+  ) {}
 
   ngOnInit(): void {}
 

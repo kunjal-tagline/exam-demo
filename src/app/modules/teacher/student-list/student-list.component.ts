@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
+
 import {
   IAllStudentDataResponse,
   IStudentData,
@@ -23,7 +23,6 @@ export class StudentListComponent implements OnInit {
     private userService: UserService,
     private toastrService: ToastrService,
     private ngbModalService: NgbModal,
-    private spinnerService: SpinnerService,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -32,15 +31,12 @@ export class StudentListComponent implements OnInit {
   }
 
   public studentDataGet(): void {
-    //this.spinnerService.displaySpinner(true);
-    
     const studentList: IAllStudentDataResponse =
       this.activatedRoute.snapshot.data['studentList'];
 
     if (studentList.statusCode === 200) {
       this.toastrService.success(studentList.message, 'Success');
       this.studentList = studentList?.data;
-      //this.spinnerService.displaySpinner(false);
     } else {
       this.toastrService.error(studentList.message, 'Failed');
     }

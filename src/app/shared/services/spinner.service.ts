@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,13 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 export class SpinnerService {
   constructor() {}
 
-  public spinnerLoad$ = new BehaviorSubject<boolean>(true);
+  public spinnerLoad$:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public getSpinnerLoadObs() {
+  public getSpinnerLoadObs(): Observable<boolean> {
     return this.spinnerLoad$.asObservable();
   }
 
-  public displaySpinner(value: boolean) {
+  public displaySpinner(value: boolean):void {
     this.spinnerLoad$.next(value);
   }
 }

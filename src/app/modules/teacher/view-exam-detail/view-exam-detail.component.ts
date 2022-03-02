@@ -1,5 +1,4 @@
 import { ToastrService } from 'ngx-toastr';
-import { SpinnerService } from 'src/app/shared/services/spinner.service';
 import { ITeacherViewExamDetails } from 'src/app/shared/interfaces/teacher.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +14,6 @@ export class ViewExamDetailComponent implements OnInit {
   public getExamId = this.activatedRoute.snapshot.params['examId'];
   constructor(
     private activatedRoute: ActivatedRoute,
-    private spinnerService: SpinnerService,
     private toastrService: ToastrService
   ) {}
 
@@ -24,13 +22,11 @@ export class ViewExamDetailComponent implements OnInit {
   }
 
   public viewExamDetails(): void {
-    this.spinnerService.displaySpinner(true);
     const viewExamDetail: ITeacherViewExamDetails =
       this.activatedRoute.snapshot.data['viewExamDetail'];
 
     if (viewExamDetail.statusCode === 200) {
       this.examDetailsQuestions = viewExamDetail?.data?.questions;
-      this.spinnerService.displaySpinner(false);
       this.toastrService.success(viewExamDetail.message, 'Success');
     } else {
       this.toastrService.error(viewExamDetail.message, 'Failed');
